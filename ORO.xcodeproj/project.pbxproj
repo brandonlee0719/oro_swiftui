@@ -13,8 +13,8 @@
 		04FEB40129070B6B008844DE /* Tests_macOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FEB40029070B6B008844DE /* Tests_macOSLaunchTests.swift */; };
 		04FEB40229070B6B008844DE /* OROApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FEB3DA29070B66008844DE /* OROApp.swift */; };
 		04FEB40329070B6B008844DE /* OROApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FEB3DA29070B66008844DE /* OROApp.swift */; };
-		04FEB40429070B6B008844DE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FEB3DB29070B66008844DE /* ContentView.swift */; };
-		04FEB40529070B6B008844DE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FEB3DB29070B66008844DE /* ContentView.swift */; };
+		04FEB40429070B6B008844DE /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FEB3DB29070B66008844DE /* SplashView.swift */; };
+		04FEB40529070B6B008844DE /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FEB3DB29070B66008844DE /* SplashView.swift */; };
 		04FEB40629070B6B008844DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04FEB3DC29070B6A008844DE /* Assets.xcassets */; };
 		04FEB40729070B6B008844DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04FEB3DC29070B6A008844DE /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -38,7 +38,7 @@
 
 /* Begin PBXFileReference section */
 		04FEB3DA29070B66008844DE /* OROApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OROApp.swift; sourceTree = "<group>"; };
-		04FEB3DB29070B66008844DE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		04FEB3DB29070B66008844DE /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		04FEB3DC29070B6A008844DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04FEB3E129070B6B008844DE /* ORO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ORO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04FEB3E729070B6B008844DE /* ORO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ORO.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,6 +83,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		046903FA290921C200A232D7 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				04FEB3DB29070B66008844DE /* SplashView.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
 		04FEB3D429070B65008844DE = {
 			isa = PBXGroup;
 			children = (
@@ -97,8 +105,8 @@
 		04FEB3D929070B65008844DE /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				046903FA290921C200A232D7 /* Splash */,
 				04FEB3DA29070B66008844DE /* OROApp.swift */,
-				04FEB3DB29070B66008844DE /* ContentView.swift */,
 				04FEB3DC29070B6A008844DE /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -299,7 +307,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04FEB40429070B6B008844DE /* ContentView.swift in Sources */,
+				04FEB40429070B6B008844DE /* SplashView.swift in Sources */,
 				04FEB40229070B6B008844DE /* OROApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -308,7 +316,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04FEB40529070B6B008844DE /* ContentView.swift in Sources */,
+				04FEB40529070B6B008844DE /* SplashView.swift in Sources */,
 				04FEB40329070B6B008844DE /* OROApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
