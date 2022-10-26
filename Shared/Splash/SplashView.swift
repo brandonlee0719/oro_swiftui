@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  SplashView.swift
 //  Shared
 //
 //  Created by mac on 2022/10/25.
@@ -41,7 +41,6 @@ struct SplashView: View {
                     .font(.system(size: 20))
                     .foregroundColor(.white)
                     .padding(EdgeInsets(top: 0.16 * containerHeight, leading: 0, bottom: 0, trailing: 0))
-
             }
             .background(background)
             .scaledToFill()
