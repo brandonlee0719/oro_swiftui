@@ -9,11 +9,12 @@ import SwiftUI
 
 struct SplashView: View {
     @State private var isActive = false
+    let login = SigninView()
     
-    let background = LinearGradient(gradient: Gradient(colors: [Color(red: 86/255, green: 183/255, blue: 230/255), Color(red: 121/255, green: 211/255, blue: 255/255)]), startPoint: .top, endPoint: .bottom);
-    let containerWidth:CGFloat = UIScreen.main.bounds.width;
-    let containerHeight:CGFloat = UIScreen.main.bounds.height;
-
+    let background = LinearGradient(gradient: Gradient(colors: [Color(red: 86/255, green: 183/255, blue: 230/255), Color(red: 121/255, green: 211/255, blue: 255/255)]), startPoint: .top, endPoint: .bottom)
+    let containerWidth:CGFloat = UIScreen.main.bounds.width
+    let containerHeight:CGFloat = UIScreen.main.bounds.height
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -45,9 +46,7 @@ struct SplashView: View {
                         .font(.system(size: 20))
                         .foregroundColor(.white)
                         .padding(EdgeInsets(top: 0.16 * containerHeight, leading: 0, bottom: 0, trailing: 0))
-                    NavigationLink(destination: login,
-                        isActive: $isActive,
-                        label: { SigninView() })
+                    NavigationLink(destination: login, isActive: $isActive, label: { EmptyView() })
                 }
                 .background(background)
                 .scaledToFill()

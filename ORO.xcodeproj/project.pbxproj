@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		046904012909267900A232D7 /* SigninView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046904002909267800A232D7 /* SigninView.swift */; };
+		046904022909267900A232D7 /* SigninView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046904002909267800A232D7 /* SigninView.swift */; };
 		04FEB3F329070B6B008844DE /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FEB3F229070B6B008844DE /* Tests_iOS.swift */; };
 		04FEB3F529070B6B008844DE /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FEB3F429070B6B008844DE /* Tests_iOSLaunchTests.swift */; };
 		04FEB3FF29070B6B008844DE /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FEB3FE29070B6B008844DE /* Tests_macOS.swift */; };
@@ -37,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		046904002909267800A232D7 /* SigninView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninView.swift; sourceTree = "<group>"; };
 		04FEB3DA29070B66008844DE /* OROApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OROApp.swift; sourceTree = "<group>"; };
 		04FEB3DB29070B66008844DE /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		04FEB3DC29070B6A008844DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -91,6 +94,14 @@
 			path = Splash;
 			sourceTree = "<group>";
 		};
+		046903FF2909263400A232D7 /* Signin */ = {
+			isa = PBXGroup;
+			children = (
+				046904002909267800A232D7 /* SigninView.swift */,
+			);
+			path = Signin;
+			sourceTree = "<group>";
+		};
 		04FEB3D429070B65008844DE = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +116,7 @@
 		04FEB3D929070B65008844DE /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				046903FF2909263400A232D7 /* Signin */,
 				046903FA290921C200A232D7 /* Splash */,
 				04FEB3DA29070B66008844DE /* OROApp.swift */,
 				04FEB3DC29070B6A008844DE /* Assets.xcassets */,
@@ -309,6 +321,7 @@
 			files = (
 				04FEB40429070B6B008844DE /* SplashView.swift in Sources */,
 				04FEB40229070B6B008844DE /* OROApp.swift in Sources */,
+				046904012909267900A232D7 /* SigninView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,6 +331,7 @@
 			files = (
 				04FEB40529070B6B008844DE /* SplashView.swift in Sources */,
 				04FEB40329070B6B008844DE /* OROApp.swift in Sources */,
+				046904022909267900A232D7 /* SigninView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
