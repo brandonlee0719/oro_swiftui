@@ -13,6 +13,8 @@
 		0473AC81290BBBCD00ABB348 /* Audiograms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0473AC80290BBBCD00ABB348 /* Audiograms.swift */; };
 		0473AC83290BBBE500ABB348 /* Records.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0473AC82290BBBE500ABB348 /* Records.swift */; };
 		0473AC86290BBDDB00ABB348 /* Folders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0473AC85290BBDDB00ABB348 /* Folders.swift */; };
+		0473AC88290BC0E100ABB348 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0473AC87290BC0E100ABB348 /* MainView.swift */; };
+		0473AC8A290BC94300ABB348 /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0473AC89290BC94300ABB348 /* MainRouter.swift */; };
 		04FEB3F329070B6B008844DE /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FEB3F229070B6B008844DE /* Tests_iOS.swift */; };
 		04FEB3F529070B6B008844DE /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FEB3F429070B6B008844DE /* Tests_iOSLaunchTests.swift */; };
 		04FEB3FF29070B6B008844DE /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FEB3FE29070B6B008844DE /* Tests_macOS.swift */; };
@@ -48,6 +50,8 @@
 		0473AC80290BBBCD00ABB348 /* Audiograms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Audiograms.swift; sourceTree = "<group>"; };
 		0473AC82290BBBE500ABB348 /* Records.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Records.swift; sourceTree = "<group>"; };
 		0473AC85290BBDDB00ABB348 /* Folders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Folders.swift; sourceTree = "<group>"; };
+		0473AC87290BC0E100ABB348 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		0473AC89290BC94300ABB348 /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
 		04FEB3DA29070B66008844DE /* OROApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OROApp.swift; sourceTree = "<group>"; };
 		04FEB3DB29070B66008844DE /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		04FEB3DC29070B6A008844DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -117,6 +121,8 @@
 				0473AC7D290BBB2700ABB348 /* Settings */,
 				0473AC7C290BBB0D00ABB348 /* Audiograms */,
 				0473AC7B290BBAE200ABB348 /* Records */,
+				0473AC87290BC0E100ABB348 /* MainView.swift */,
+				0473AC89290BC94300ABB348 /* MainRouter.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -373,11 +379,13 @@
 			files = (
 				0473AC83290BBBE500ABB348 /* Records.swift in Sources */,
 				04FEB40429070B6B008844DE /* SplashView.swift in Sources */,
+				0473AC88290BC0E100ABB348 /* MainView.swift in Sources */,
 				0473AC86290BBDDB00ABB348 /* Folders.swift in Sources */,
 				04FEB40229070B6B008844DE /* OROApp.swift in Sources */,
 				0473AC7F290BBBAF00ABB348 /* Settings.swift in Sources */,
 				0473AC81290BBBCD00ABB348 /* Audiograms.swift in Sources */,
 				046904012909267900A232D7 /* SigninView.swift in Sources */,
+				0473AC8A290BC94300ABB348 /* MainRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

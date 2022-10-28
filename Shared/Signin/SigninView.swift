@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct SigninView: View {
-
+    @State var selection: Int? = nil
+    let main = MainView(viewRouter: MainRouter())
     let background = LinearGradient(gradient: Gradient(colors: [Color(red: 86/255, green: 183/255, blue: 230/255), Color(red: 121/255, green: 211/255, blue: 255/255)]), startPoint: .top, endPoint: .bottom)
     let containerWidth:CGFloat = UIScreen.main.bounds.width
     let containerHeight:CGFloat = UIScreen.main.bounds.height
@@ -41,21 +42,23 @@ struct SigninView: View {
                     }
                     .padding(EdgeInsets(top: 0.022 * containerHeight, leading: 0, bottom: 0, trailing: 0))
                     Spacer()
-                    Button(action: {
-                        print("sign up bin tapped")
-                    }) {
-                        Text("Continue with Email")
-                            .frame(minWidth: 0, maxWidth: 0.8 * containerWidth)
-                            .font(.system(size: 18))
-                            .padding()
-                            .foregroundColor(.white)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .stroke(Color.white, lineWidth: 2)
-                        )
+                    NavigationLink(destination: main.navigationBarHidden(true), tag: 1, selection: $selection) {
+                        Button(action: {
+                            self.selection = 1
+                        }) {
+                            Text("Continue with Email")
+                                .frame(minWidth: 0, maxWidth: 0.8 * containerWidth)
+                                .font(.system(size: 18))
+                                .padding()
+                                .foregroundColor(.white)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .stroke(Color.white, lineWidth: 2)
+                            )
+                        }
+                        .background(.black.opacity(0))
+                        .cornerRadius(8)
                     }
-                    .background(.black.opacity(0))
-                    .cornerRadius(8)
                    
                 }
                 .background(background)
