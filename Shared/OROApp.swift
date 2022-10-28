@@ -12,7 +12,6 @@ struct OROApp: App {
     var body: some Scene {
         WindowGroup {
             SplashView()
-            SigninView()
         }
     }
 }

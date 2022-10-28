@@ -30,8 +30,8 @@ struct MainView: View {
                             .offset(y: -geometry.size.height/6)
                     }
                     HStack {
-                        TabBarIcon(viewRouter: viewRouter, assignedPage: .record, width: geometry.size.width/5, height: geometry.size.height/28, systemIconName: "homekit", tabName: "Home")
-                        TabBarIcon(viewRouter: viewRouter, assignedPage: .audiogram, width: geometry.size.width/5, height: geometry.size.height/28, systemIconName: "heart", tabName: "Liked")
+                        TabBarIcon(viewRouter: viewRouter, assignedPage: .record, width: geometry.size.width/5, height: geometry.size.height/28, iconName: "tab_record", tabName: "Records")
+                        TabBarIcon(viewRouter: viewRouter, assignedPage: .audiogram, width: geometry.size.width/5, height: geometry.size.height/28, iconName: "tab_audiogram", tabName: "Audiograms")
                         ZStack {
                             
                             Image("Btn_center")
@@ -47,8 +47,8 @@ struct MainView: View {
                                     showPopUp.toggle()
                                 }
                             }
-                        TabBarIcon(viewRouter: viewRouter, assignedPage: .folder, width: geometry.size.width/5, height: geometry.size.height/28, systemIconName: "waveform", tabName: "Records")
-                        TabBarIcon(viewRouter: viewRouter, assignedPage: .setting, width: geometry.size.width/5, height: geometry.size.height/28, systemIconName: "person.crop.circle", tabName: "Account")
+                        TabBarIcon(viewRouter: viewRouter, assignedPage: .folder, width: geometry.size.width/5, height: geometry.size.height/28, iconName: "tab_folder", tabName: "Folders")
+                        TabBarIcon(viewRouter: viewRouter, assignedPage: .setting, width: geometry.size.width/5, height: geometry.size.height/28, iconName: "tab_setting", tabName: "Settings")
                     }
                         .frame(width: geometry.size.width, height: geometry.size.height/896*100)
                         .background(
@@ -108,23 +108,25 @@ struct TabBarIcon: View {
     let assignedPage: Page
     
     let width, height: CGFloat
-    let systemIconName, tabName: String
+    let iconName, tabName: String
 
     var body: some View {
         VStack {
-            Image(systemName: systemIconName)
+            Image(iconName)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: width, height: height)
                 .padding(.top, 10)
+                .opacity(viewRouter.currentPage == assignedPage ? 1: 0.6)
             Text(tabName)
                 .font(.footnote)
+                .foregroundColor(.white)
+                .opacity(viewRouter.currentPage == assignedPage ? 1: 0.6)
             Spacer()
         }
             .padding(.horizontal, -4)
             .onTapGesture {
                 viewRouter.currentPage = assignedPage
             }
-            .foregroundColor(viewRouter.currentPage == assignedPage ? Color("TabBarHighlight") : .gray)
     }
 }
