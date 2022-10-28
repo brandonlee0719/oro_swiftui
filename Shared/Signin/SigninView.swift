@@ -66,6 +66,7 @@ struct SigninView: View {
                 .padding(EdgeInsets(top: 0.1 * containerHeight, leading: 0, bottom: 0.2 * containerHeight, trailing: 0))
             }
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 

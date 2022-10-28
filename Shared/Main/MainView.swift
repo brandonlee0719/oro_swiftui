@@ -60,6 +60,7 @@ struct MainView: View {
             }
                 .edgesIgnoringSafeArea(.bottom)
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
