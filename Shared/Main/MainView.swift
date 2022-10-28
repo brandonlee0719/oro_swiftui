@@ -5,8 +5,9 @@ struct MainView: View {
     
     @StateObject var viewRouter: MainRouter
     
-    
     @State var showPopUp = false
+
+    let background = LinearGradient(gradient: Gradient(colors: [Color(red: 76/255, green: 76/255, blue: 76/255), Color(red: 41/255, green: 41/255, blue: 41/255)]), startPoint: .top, endPoint: .bottom)
     
     var body: some View {
         GeometryReader { geometry in
@@ -14,13 +15,13 @@ struct MainView: View {
                 Spacer()
                 switch viewRouter.currentPage {
                 case .record:
-                    Text("Home")
+                    RecordView()
                 case .audiogram:
-                    Text("Liked")
+                    AudiogramView()
                 case .folder:
-                   Text("Records")
+                   FolderView()
                 case .setting:
-                    Text("User")
+                    SettingView()
                 }
                 Spacer()
                 ZStack {
@@ -32,15 +33,12 @@ struct MainView: View {
                         TabBarIcon(viewRouter: viewRouter, assignedPage: .record, width: geometry.size.width/5, height: geometry.size.height/28, systemIconName: "homekit", tabName: "Home")
                         TabBarIcon(viewRouter: viewRouter, assignedPage: .audiogram, width: geometry.size.width/5, height: geometry.size.height/28, systemIconName: "heart", tabName: "Liked")
                         ZStack {
-                            Circle()
-                                .foregroundColor(.white)
-                                .frame(width: geometry.size.width/7, height: geometry.size.width/7)
-                                .shadow(radius: 4)
-                            Image(systemName: "plus.circle.fill")
+                            
+                            Image("Btn_center")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(width: geometry.size.width/7-6 , height: geometry.size.width/7-6)
-                                .foregroundColor(Color("DarkPurple"))
+                                .frame(width: geometry.size.width/5 , height: geometry.size.width/5)
+                                .foregroundColor(.blue)
                                 .rotationEffect(Angle(degrees: showPopUp ? 90 : 0))
                         }
                             .offset(y: -geometry.size.height/8/2)
@@ -52,8 +50,12 @@ struct MainView: View {
                         TabBarIcon(viewRouter: viewRouter, assignedPage: .folder, width: geometry.size.width/5, height: geometry.size.height/28, systemIconName: "waveform", tabName: "Records")
                         TabBarIcon(viewRouter: viewRouter, assignedPage: .setting, width: geometry.size.width/5, height: geometry.size.height/28, systemIconName: "person.crop.circle", tabName: "Account")
                     }
-                        .frame(width: geometry.size.width, height: geometry.size.height/8)
-                    .background(Color("TabBarBackground").shadow(radius: 2))
+                        .frame(width: geometry.size.width, height: geometry.size.height/896*100)
+                        .background(
+                            Image("Bg_tab")
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                        )
                 }
             }
                 .edgesIgnoringSafeArea(.bottom)

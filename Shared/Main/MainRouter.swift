@@ -2,7 +2,7 @@ import SwiftUI
 
 class MainRouter: ObservableObject {
     
-    @Published var currentPage: Page = .home
+    @Published var currentPage: Page = .record
     
 }
 
