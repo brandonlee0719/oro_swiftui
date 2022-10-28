@@ -8,8 +8,8 @@ class MainRouter: ObservableObject {
 
 
 enum Page {
-    case home
-    case liked
-    case records
-    case user
+    case record
+    case audiogram
+    case folder
+    case setting
 }

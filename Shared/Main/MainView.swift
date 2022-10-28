@@ -13,13 +13,13 @@ struct MainView: View {
             VStack {
                 Spacer()
                 switch viewRouter.currentPage {
-                case .home:
+                case .record:
                     Text("Home")
-                case .liked:
+                case .audiogram:
                     Text("Liked")
-                case .records:
+                case .folder:
                    Text("Records")
-                case .user:
+                case .setting:
                     Text("User")
                 }
                 Spacer()
@@ -29,8 +29,8 @@ struct MainView: View {
                             .offset(y: -geometry.size.height/6)
                     }
                     HStack {
-                        TabBarIcon(viewRouter: viewRouter, assignedPage: .home, width: geometry.size.width/5, height: geometry.size.height/28, systemIconName: "homekit", tabName: "Home")
-                        TabBarIcon(viewRouter: viewRouter, assignedPage: .liked, width: geometry.size.width/5, height: geometry.size.height/28, systemIconName: "heart", tabName: "Liked")
+                        TabBarIcon(viewRouter: viewRouter, assignedPage: .record, width: geometry.size.width/5, height: geometry.size.height/28, systemIconName: "homekit", tabName: "Home")
+                        TabBarIcon(viewRouter: viewRouter, assignedPage: .audiogram, width: geometry.size.width/5, height: geometry.size.height/28, systemIconName: "heart", tabName: "Liked")
                         ZStack {
                             Circle()
                                 .foregroundColor(.white)
@@ -49,8 +49,8 @@ struct MainView: View {
                                     showPopUp.toggle()
                                 }
                             }
-                        TabBarIcon(viewRouter: viewRouter, assignedPage: .records, width: geometry.size.width/5, height: geometry.size.height/28, systemIconName: "waveform", tabName: "Records")
-                        TabBarIcon(viewRouter: viewRouter, assignedPage: .user, width: geometry.size.width/5, height: geometry.size.height/28, systemIconName: "person.crop.circle", tabName: "Account")
+                        TabBarIcon(viewRouter: viewRouter, assignedPage: .folder, width: geometry.size.width/5, height: geometry.size.height/28, systemIconName: "waveform", tabName: "Records")
+                        TabBarIcon(viewRouter: viewRouter, assignedPage: .setting, width: geometry.size.width/5, height: geometry.size.height/28, systemIconName: "person.crop.circle", tabName: "Account")
                     }
                         .frame(width: geometry.size.width, height: geometry.size.height/8)
                     .background(Color("TabBarBackground").shadow(radius: 2))
