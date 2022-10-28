@@ -1,8 +1,14 @@
-//
-//  Folders.swift
-//  ORO (iOS)
-//
-//  Created by mac on 2022/10/28.
-//
+import SwiftUI
 
-import Foundation
+struct FolderView: View {
+    
+    var body: some View {
+        Text("Folder Page")
+    }
+}
+
+struct FolderView_Previews: PreviewProvider {
+    static var previews: some View {
+        FolderView()
+    }
+}

@@ -1,8 +1,14 @@
-//
-//  Settings.swift
-//  ORO (iOS)
-//
-//  Created by mac on 2022/10/28.
-//
+import SwiftUI
 
-import Foundation
+struct SettingView: View {
+    
+    var body: some View {
+        Text("Setting Page")
+    }
+}
+
+struct SettingView_Previews: PreviewProvider {
+    static var previews: some View {
+        SettingView()
+    }
+}
