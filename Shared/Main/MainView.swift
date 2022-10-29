@@ -12,18 +12,16 @@ struct MainView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                Spacer()
                 switch viewRouter.currentPage {
-                case .record:
-                    RecordView()
-                case .audiogram:
-                    AudiogramView()
-                case .folder:
-                   FolderView()
-                case .setting:
-                    SettingView()
+                    case .record:
+                        RecordView()
+                    case .audiogram:
+                        AudiogramView()
+                    case .folder:
+                    FolderView()
+                    case .setting:
+                        SettingView()
                 }
-                Spacer()
                 ZStack {
                     if showPopUp {
                         PlusMenu(widthAndHeight: geometry.size.width/7)
@@ -61,6 +59,7 @@ struct MainView: View {
                 .edgesIgnoringSafeArea(.bottom)
         }
         .navigationBarBackButtonHidden(true)
+        .background(.red)
     }
 }
 
