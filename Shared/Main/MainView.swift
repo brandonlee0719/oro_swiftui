@@ -11,7 +11,7 @@ struct MainView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            VStack {
+            VStack(alignment: .leading) {
                 switch viewRouter.currentPage {
                     case .record:
                         RecordView()
@@ -56,10 +56,8 @@ struct MainView: View {
                         )
                 }
             }
-                .edgesIgnoringSafeArea(.bottom)
+               .edgesIgnoringSafeArea(.bottom)
         }
-        .navigationBarBackButtonHidden(true)
-        .background(.red)
     }
 }
 

@@ -44,40 +44,50 @@ struct RecordView: View {
     ]
 
     var body: some View {
-        VStack {
-            HStack()
-            {
-                Spacer()
-                Button("Import", action: {})
-                Spacer().frame(width:24)
-            }
-                .frame(width:.infinity, height:48, alignment: .bottom)
-            List {
-                Section(header: Text("June 2021")) {
-                    ForEach(records, id: \.id) { recordData in
-                        RecordItem(
-                            playStatus: recordData.playStatus,
-                            title: recordData.title,
-                            detail: recordData.detail,
-                            duration: recordData.duration,
-                            month: recordData.month,
-                            date: recordData.date)
-                    }
+        GeometryReader { geometry in
+            VStack(alignment: .leading) {
+                HStack
+                {
+                    Spacer()
+                    Button(action: {
+                            
+                        }) {
+                            Text("Import")
+                                .font(.system(size: 16))
+                                .foregroundColor(.white)
+                        }
+                        .cornerRadius(8)
+                    Spacer().frame(width:24)
                 }
-
-                Section(header: Text("May 2021")) {
-                    ForEach(records, id: \.id) { recordData in
-                        RecordItem(
-                            playStatus: recordData.playStatus,
-                            title: recordData.title,
-                            detail: recordData.detail,
-                            duration: recordData.duration,
-                            month: recordData.month,
-                            date: recordData.date)
+                    .background(.blue)
+                List {
+                    Section(header: Text("June 2021")) {
+                        ForEach(records, id: \.id) { recordData in
+                            RecordItem(
+                                playStatus: recordData.playStatus,
+                                title: recordData.title,
+                                detail: recordData.detail,
+                                duration: recordData.duration,
+                                month: recordData.month,
+                                date: recordData.date)
+                        }
                     }
-                }
 
+                    Section(header: Text("May 2021")) {
+                        ForEach(records, id: \.id) { recordData in
+                            RecordItem(
+                                playStatus: recordData.playStatus,
+                                title: recordData.title,
+                                detail: recordData.detail,
+                                duration: recordData.duration,
+                                month: recordData.month,
+                                date: recordData.date)
+                        }
+                    }
+
+                }
             }
+//                .edgesIgnoringSafeArea(.top)
         }
     }
 }
