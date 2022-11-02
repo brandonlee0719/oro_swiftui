@@ -58,7 +58,7 @@ struct FolderView: View {
                 List {
                     Section(header: Text("Folders (\(folders.count))")) {
                         ForEach(folders, id: \.id) { folderData in
-                            RecordItem(
+                            FolderItem(
                                 security: folderData.security,
                                 title: folderData.title,
                                 lastDate: folderData.lastDate,
@@ -78,71 +78,6 @@ struct FolderView_Previews: PreviewProvider {
     }
 }
 
-struct RecordItem: View {
-
-    let playStatus: Int // 0: stop, 1: play
-    let title: String
-    let detail: String
-    let duration: String
-    let month: String
-    let date: String
-
-    var body: some View {
-        HStack(alignment: .center, spacing: 16)
-        {
-            ZStack {
-                RoundedRectangle(cornerRadius:6, style: .continuous)
-                    .foregroundColor(Color(red: 238/255, green: 248/255, blue: 252/255, opacity: 1.0))
-                    .frame(width: 64, height: 64)
-                Circle()
-                    .foregroundColor(Color(red: 86/255, green: 183/255, blue: 230/255, opacity: 1.0))
-                    .frame(width: 40, height: 40)
-                Image(systemName: playStatus == 0 ? "play.fill" : "stop.fill")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 20, height: 20)
-                    .foregroundColor(.white)
-                    .padding([.leading], playStatus == 0 ? 5: 0)
-            }
-
-            VStack {
-                HStack {
-                    Text(title)
-                        .font(.system(size: 14))
-                        .fontWeight(.regular)
-                        .foregroundColor(Color(red: 0.576, green: 0.62, blue: 0.678))
-                    Spacer()
-                    Image(systemName: "ellipsis")
-                }
-                HStack {
-                    VStack(alignment: .leading, spacing: 0) {
-                        Text(detail)
-                            .font(.system(size: 16))
-                            .fontWeight(.semibold)
-                            .foregroundColor(Color(red: 0.4, green: 0.4, blue: 0.4))
-                        Text(duration)
-                            .font(.system(size: 14))
-                            .fontWeight(.regular)
-                            .foregroundColor(Color(red: 0.337, green: 0.718, blue: 0.902))
-                    }
-                    Spacer()
-                    VStack {
-                        Text(month)
-                            .font(.system(size: 14))
-                            .fontWeight(.regular)
-                            .foregroundColor(Color(red: 0.576, green: 0.62, blue: 0.678))
-                        Text(date)
-                            .font(.system(size: 18))
-                            .fontWeight(.regular)
-                            .foregroundColor(Color(red: 0.576, green: 0.62, blue: 0.678))
-                    }
-                }
-            }
-            
-        }
-    }
-}
-
 struct FolderItem: View {
 
     let security: Int // 0: open, 1: security
@@ -157,18 +92,18 @@ struct FolderItem: View {
                 RoundedRectangle(cornerRadius:6, style: .continuous)
                     .foregroundColor(.white)
                     .frame(width: 64, height: 64)
-                Image("stop.fill")
+                Image("folder")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 20, height: 20)
+                    .frame(width: 40, height: 32)
                     .foregroundColor(.white)
-                    .padding([.leading], playStatus == 0 ? 5: 0)
-                Image(systemName: security == 0 ? "play.fill" : "stop.fill")
+                    .padding([.leading], security == 0 ? 5: 0)
+                Image(systemName: security == 0 ? "play.fill" : "lock.fill")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 20, height: 20)
+                    .frame(width: 10, height: 10)
                     .foregroundColor(.white)
-                    .padding([.leading], playStatus == 0 ? 5: 0)
+                    .padding([.leading], security == 0 ? 5: 0)
             }
 
             VStack {
@@ -176,20 +111,20 @@ struct FolderItem: View {
                     Text(title)
                         .font(.system(size: 14))
                         .fontWeight(.regular)
-                        .foregroundColor(Color(red: 0.576, green: 0.62, blue: 0.678))
+                        .foregroundColor(Color(red: 0.4, green: 0.4, blue: 0.4))
                     Spacer()
                     Image(systemName: "ellipsis")
                 }
                 HStack {
                     VStack(alignment: .leading, spacing: 0) {
-                        Text('\(records) Records`)
+                        Text("\(records) Records")
                             .font(.system(size: 14))
                             .fontWeight(.regular)
                             .foregroundColor(Color(red: 0.337, green: 0.718, blue: 0.902))
-                        Text('Last edit: \(lastDate)')
+                        Text("Last edit: \(lastDate)")
                             .font(.system(size: 12))
                             .fontWeight(.semibold)
-                            .foregroundColor(Color(red: 0.4, green: 0.4, blue: 0.4))
+                            .foregroundColor(Color(red: 0.576, green: 0.62, blue: 0.678))
                     }
                     Spacer()
                 }
