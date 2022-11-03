@@ -49,7 +49,10 @@ struct SettingView: View {
                         .frame(width: 24, height: 24)
                         .foregroundColor(.white)
                 }
-                    .frame(width:.infinity, height: containerHeight * 64 / 896, alignment: .center)
+                    .frame(height: containerHeight * 64 / 896, alignment: .center)
+                    .overlay( Divider()
+                              .frame(maxWidth: .infinity, maxHeight:1)
+                                .background(.white), alignment: .bottom)
                     .padding(EdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 24))
                 HStack {
                     Image("setting_general")
@@ -68,7 +71,10 @@ struct SettingView: View {
                         .frame(width: 24, height: 24)
                         .foregroundColor(.white)
                 }
-                    .frame(width:.infinity, height: containerHeight * 64 / 896, alignment: .center)
+                    .frame(height: containerHeight * 64 / 896, alignment: .center)
+                    .overlay( Divider()
+                              .frame(maxWidth: .infinity, maxHeight:1)
+                                .background(.white), alignment: .bottom)
                     .padding(EdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 24))
                 HStack {
                     Image("setting_support")
@@ -82,7 +88,10 @@ struct SettingView: View {
                         .padding(EdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 0))
                     Spacer()
                 }
-                    .frame(width:.infinity, height: containerHeight * 64 / 896, alignment: .center)
+                    .frame(height: containerHeight * 64 / 896, alignment: .center)
+                    .overlay( Divider()
+                              .frame(maxWidth: .infinity, maxHeight:1)
+                                .background(.white), alignment: .bottom)
                     .padding(EdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 24))
                 HStack {
                     Image("setting_privacy")
@@ -96,7 +105,10 @@ struct SettingView: View {
                         .padding(EdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 0))
                     Spacer()
                 }
-                    .frame(width:.infinity, height: containerHeight * 64 / 896, alignment: .center)
+                    .frame(height: containerHeight * 64 / 896, alignment: .center)
+                    .overlay( Divider()
+                              .frame(maxWidth: .infinity, maxHeight:1)
+                                .background(.white), alignment: .bottom)
                     .padding(EdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 24))
                 HStack {
                     Image("setting_terms")
@@ -110,7 +122,10 @@ struct SettingView: View {
                         .padding(EdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 0))
                     Spacer()
                 }
-                    .frame(width:.infinity, height: containerHeight * 64 / 896, alignment: .center)
+                    .frame(height: containerHeight * 64 / 896, alignment: .center)
+                    .overlay( Divider()
+                              .frame(maxWidth: .infinity, maxHeight:1)
+                                .background(.white), alignment: .bottom)
                     .padding(EdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 24))
                 HStack {
                     Image("setting_logout")
@@ -124,7 +139,7 @@ struct SettingView: View {
                         .padding(EdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 0))
                     Spacer()
                 }
-                    .frame(width:.infinity, height: containerHeight * 64 / 896, alignment: .center)
+                    .frame(height: containerHeight * 64 / 896, alignment: .center)
                     .padding(EdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 24))
             }
         }
