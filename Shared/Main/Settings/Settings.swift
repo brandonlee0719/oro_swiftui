@@ -1,11 +1,13 @@
 import SwiftUI
 
 struct SettingView: View {
+    @StateObject var viewRouter: MainRouter
     
     let background = LinearGradient(gradient: Gradient(colors: [Color(red: 86/255, green: 183/255, blue: 230/255), Color(red: 121/255, green: 211/255, blue: 255/255)]), startPoint: .top, endPoint: .bottom)
     let containerWidth:CGFloat = UIScreen.main.bounds.width
     let containerHeight:CGFloat = UIScreen.main.bounds.height
 
+    
     var body: some View {
         ZStack(alignment: .topLeading) {
                 background
@@ -14,7 +16,8 @@ struct SettingView: View {
                 HStack {
                     Spacer()
                     Button(action: {
-                            
+                            print("helloooooooooooooooooo")
+                            viewRouter.currentPage = .record
                         }) {
                             Image(systemName: "xmark")
                                 .resizable()
@@ -148,6 +151,6 @@ struct SettingView: View {
 
 struct SettingView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingView()
+        SettingView(viewRouter: MainRouter())
     }
 }

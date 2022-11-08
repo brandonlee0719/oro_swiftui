@@ -18,42 +18,51 @@ struct MainView: View {
                     case .audiogram:
                         AudiogramView()
                     case .folder:
-                    FolderView()
+                        FolderView()
                     case .setting:
-                        SettingView()
+                        SettingView(viewRouter: viewRouter)
                 }
-                ZStack {
-                    if showPopUp {
-                        PlusMenu(widthAndHeight: geometry.size.width/7)
-                            .offset(y: -geometry.size.height/6)
-                    }
-                    HStack {
-                        TabBarIcon(viewRouter: viewRouter, assignedPage: .record, width: geometry.size.width/5, height: geometry.size.height/28, iconName: "tab_record", tabName: "Records")
-                        TabBarIcon(viewRouter: viewRouter, assignedPage: .audiogram, width: geometry.size.width/5, height: geometry.size.height/28, iconName: "tab_audiogram", tabName: "Audiograms")
-                        ZStack {
-                            
-                            Image("Btn_center")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: geometry.size.width/5 , height: geometry.size.width/5)
-                                .foregroundColor(.blue)
-                                .rotationEffect(Angle(degrees: showPopUp ? 90 : 0))
+                if(viewRouter.currentPage != .setting) {
+                    ZStack {
+                        if showPopUp {
+                            PlusMenu(widthAndHeight: geometry.size.width/7)
+                                .offset(y: -geometry.size.height/6)
                         }
-                            .offset(y: -geometry.size.height/8/2)
-                            .onTapGesture {
-                                withAnimation {
-                                    showPopUp.toggle()
-                                }
+                        HStack {
+                            TabBarIcon(viewRouter: viewRouter, assignedPage: .record, width: geometry.size.width/5, height: geometry.size.height/28, iconName: "tab_record", tabName: "Records")
+                            TabBarIcon(viewRouter: viewRouter, assignedPage: .audiogram, width: geometry.size.width/5, height: geometry.size.height/28, iconName: "tab_audiogram", tabName: "Audiograms")
+                            ZStack {
+                                
+                                Image("Btn_center")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: geometry.size.width/5 , height: geometry.size.width/5)
+                                    .foregroundColor(.blue)
+                                    .rotationEffect(Angle(degrees: showPopUp ? 90 : 0))
+                                Image("Logo")
+                                    .resizable()
+                                    .padding(16)
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: geometry.size.width/5 , height: geometry.size.width/5)
+                                    .foregroundColor(.blue)
+                                    .rotationEffect(Angle(degrees: showPopUp ? 90 : 0))
                             }
-                        TabBarIcon(viewRouter: viewRouter, assignedPage: .folder, width: geometry.size.width/5, height: geometry.size.height/28, iconName: "tab_folder", tabName: "Folders")
-                        TabBarIcon(viewRouter: viewRouter, assignedPage: .setting, width: geometry.size.width/5, height: geometry.size.height/28, iconName: "tab_setting", tabName: "Settings")
+                                .offset(y: -geometry.size.height/8/2)
+                                .onTapGesture {
+                                    withAnimation {
+                                        showPopUp.toggle()
+                                    }
+                                }
+                            TabBarIcon(viewRouter: viewRouter, assignedPage: .folder, width: geometry.size.width/5, height: geometry.size.height/28, iconName: "tab_folder", tabName: "Folders")
+                            TabBarIcon(viewRouter: viewRouter, assignedPage: .setting, width: geometry.size.width/5, height: geometry.size.height/28, iconName: "tab_setting", tabName: "Settings")
+                        }
+                            .frame(width: geometry.size.width, height: geometry.size.height/896*100)
+                            .background(
+                                Image("Bg_tab")
+                                    .resizable()
+                                    .scaledToFill()
+                            )
                     }
-                        .frame(width: geometry.size.width, height: geometry.size.height/896*100)
-                        .background(
-                            Image("Bg_tab")
-                                .resizable()
-                                .scaledToFill()
-                        )
                 }
             }
                .edgesIgnoringSafeArea(.bottom)
