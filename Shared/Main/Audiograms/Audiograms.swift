@@ -55,8 +55,8 @@ struct AudiogramView: View {
                     Spacer().frame(width:24)
                 }
                     .background(.blue)
-                // List {
-                //     Section(header: Text("audios (\(audios.count))")) {
+                 List {
+                     Section(header: Text("audios (\(audios.count))")) {
                     
                         ForEach(audios, id: \.id) { AudiogramData in
                             AudiogramItem(
@@ -65,9 +65,9 @@ struct AudiogramView: View {
                                 lastDate: AudiogramData.lastDate,
                                 records: AudiogramData.records)
                         }
-                //     }
-
-                // }
+                     }
+                 }
+                 .padding(EdgeInsets(top: -10, leading: 0, bottom: -10, trailing: 0))
             }
         }
             .background(Color(red: 0.949, green: 0.957, blue: 0.98))

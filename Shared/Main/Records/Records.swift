@@ -84,10 +84,9 @@ struct RecordView: View {
                                 date: recordData.date)
                         }
                     }
-
                 }
+                .padding(EdgeInsets(top: -10, leading: 0, bottom: -10, trailing: 0))
             }
-//                .edgesIgnoringSafeArea(.top)
         }
     }
 }

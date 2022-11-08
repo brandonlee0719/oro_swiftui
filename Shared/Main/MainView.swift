@@ -52,7 +52,7 @@ struct MainView: View {
                         .background(
                             Image("Bg_tab")
                                 .resizable()
-                                .aspectRatio(contentMode: .fill)
+                                .scaledToFill()
                         )
                 }
             }
