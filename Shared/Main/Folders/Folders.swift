@@ -37,7 +37,8 @@ struct FolderView: View {
             lastDate: "12.06.2022",
             records: 45),
     ]
-
+    @State private var search: String = ""
+    
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .leading) {
