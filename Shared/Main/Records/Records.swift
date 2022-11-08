@@ -63,8 +63,16 @@ struct RecordView: View {
                     TextField(
                         "Search",
                         text: $search
-                    ).padding()
-                }   
+                    )
+                    .padding(EdgeInsets(top: 12, leading: 24, bottom: 12, trailing: 24))
+                }
+                    .background(.white)
+                    .cornerRadius(8)
+                    .padding(EdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 24))
+                Text("Recordings (24)")
+                    .font(.system(size: 16))
+                    .fontWeight(.semibold)
+                    .padding(EdgeInsets(top: 24, leading: 24, bottom: 8, trailing: 24))
                 List {
                     Section(header: Text("June 2021")) {
                         ForEach(records, id: \.id) { recordData in
@@ -93,6 +101,7 @@ struct RecordView: View {
                 .padding(EdgeInsets(top: -10, leading: 0, bottom: -10, trailing: 0))
             }
         }
+        .background(Color(red: 0.949, green: 0.957, blue: 0.98))
     }
 }
 
