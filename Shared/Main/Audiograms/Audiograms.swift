@@ -49,12 +49,25 @@ struct AudiogramView: View {
                         }) {
                             Text("Import")
                                 .font(.system(size: 16))
-                                .foregroundColor(.white)
+                                .foregroundColor(.blue)
                         }
                         .cornerRadius(8)
                     Spacer().frame(width:24)
                 }
-                    .background(.blue)
+                HStack{
+                    TextField(
+                        "Search",
+                        text: $search
+                    )
+                    .padding(EdgeInsets(top: 12, leading: 24, bottom: 12, trailing: 24))
+                }
+                    .background(.white)
+                    .cornerRadius(8)
+                    .padding(EdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 24))
+                Text("Audiograms (24)")
+                    .font(.system(size: 16))
+                    .fontWeight(.semibold)
+                    .padding(EdgeInsets(top: 24, leading: 24, bottom: 8, trailing: 24))
                  List {
                      Section(header: Text("audios (\(audios.count))")) {
                     

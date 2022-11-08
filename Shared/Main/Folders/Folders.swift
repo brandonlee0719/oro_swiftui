@@ -49,12 +49,25 @@ struct FolderView: View {
                         }) {
                             Text("Import")
                                 .font(.system(size: 16))
-                                .foregroundColor(.white)
+                                .foregroundColor(.blue)
                         }
                         .cornerRadius(8)
                     Spacer().frame(width:24)
                 }
-                    .background(.blue)
+                HStack{
+                    TextField(
+                        "Search",
+                        text: $search
+                    )
+                    .padding(EdgeInsets(top: 12, leading: 24, bottom: 12, trailing: 24))
+                }
+                    .background(.white)
+                    .cornerRadius(8)
+                    .padding(EdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 24))
+                Text("Folders (24)")
+                    .font(.system(size: 16))
+                    .fontWeight(.semibold)
+                    .padding(EdgeInsets(top: 24, leading: 24, bottom: 8, trailing: 24))
                 List {
                     Section(header: Text("Folders (\(folders.count))")) {
                         ForEach(folders, id: \.id) { folderData in
@@ -69,6 +82,7 @@ struct FolderView: View {
                 .padding(EdgeInsets(top: -10, leading: 0, bottom: -10, trailing: 0))
             }
         }
+        .background(Color(red: 0.949, green: 0.957, blue: 0.98))
     }
 }
 

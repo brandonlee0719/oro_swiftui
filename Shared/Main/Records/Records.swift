@@ -42,7 +42,7 @@ struct RecordView: View {
             month: "Jun",
             date:"02"),
     ]
-
+    @State private var search: String = ""
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .leading) {
@@ -54,12 +54,17 @@ struct RecordView: View {
                         }) {
                             Text("Import")
                                 .font(.system(size: 16))
-                                .foregroundColor(.white)
+                                .foregroundColor(.blue)
                         }
                         .cornerRadius(8)
                     Spacer().frame(width:24)
                 }
-                    .background(.blue)
+                HStack{
+                    TextField(
+                        "Search",
+                        text: $search
+                    ).padding()
+                }   
                 List {
                     Section(header: Text("June 2021")) {
                         ForEach(records, id: \.id) { recordData in
