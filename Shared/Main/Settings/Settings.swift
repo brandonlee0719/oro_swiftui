@@ -1,7 +1,10 @@
 import SwiftUI
+import Firebase
 
 struct SettingView: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @StateObject var viewRouter: MainRouter
+    @State var signOutProcessing = false
     
     let background = LinearGradient(gradient: Gradient(colors: [Color(red: 86/255, green: 183/255, blue: 230/255), Color(red: 121/255, green: 211/255, blue: 255/255)]), startPoint: .top, endPoint: .bottom)
     let containerWidth:CGFloat = UIScreen.main.bounds.width
@@ -144,7 +147,23 @@ struct SettingView: View {
                 }
                     .frame(height: containerHeight * 64 / 896, alignment: .center)
                     .padding(EdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 24))
+                    .contentShape(Rectangle())
+                    .onTapGesture { signOutUser() }
             }
+        }
+    }
+    
+    func signOutUser() {
+        signOutProcessing = true
+        let firebaseAuth = Auth.auth()
+        do {
+          try firebaseAuth.signOut()
+        } catch let signOutError as NSError {
+          print("Error signing out: %@", signOutError)
+            signOutProcessing = false
+        }
+        withAnimation {
+            self.presentationMode.wrappedValue.dismiss()
         }
     }
 }
