@@ -1,4 +1,4 @@
-//
+
 //  AudioRecorder.swift
 //  ORO
 //
@@ -72,12 +72,17 @@ class AudioRecorder: NSObject,ObservableObject {
         let fileManager = FileManager.default
         let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let directoryContents = try! fileManager.contentsOfDirectory(at: documentDirectory, includingPropertiesForKeys: nil)
+                
         for audio in directoryContents {
-            let recording = Recording(fileURL: audio, createdAt: getCreationDate(for: audio))
+            let audioAsset = AVURLAsset.init(url: audio, options: nil)
+            let duration = audioAsset.duration
+            let durationInSeconds = CMTimeGetSeconds(duration)
+            
+            let recording = Recording(fileURL: audio, createdAt: getCreationDate(for: audio), duration: Float(durationInSeconds))
             recordings.append(recording)
         }
         
-        recordings.sort(by: { $0.createdAt.compare($1.createdAt) == .orderedAscending})
+        recordings.sort(by: { $1.createdAt.compare($0.createdAt) == .orderedAscending})
         
         objectWillChange.send(self)
     }

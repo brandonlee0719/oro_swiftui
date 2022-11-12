@@ -55,7 +55,9 @@ struct RecordView: View {
                     VStack{
                         ForEach(audioRecorder.recordings, id: \.createdAt) { recording in
                             RecordItem(
-                                audioURL: recording.fileURL
+                                audioURL: recording.fileURL,
+                                createAt: recording.createdAt,
+                                duration: recording.duration
                             )
                         }
                     }
@@ -77,9 +79,11 @@ struct RecordView_Previews: PreviewProvider {
 struct RecordItem: View {
 
     let audioURL: URL
+    let createAt: Date
+    let duration: Float
 
     @ObservedObject var audioPlayer = AudioPlayer()
-
+    
     var body: some View {
         HStack(alignment: .center)
         {
@@ -104,8 +108,7 @@ struct RecordItem: View {
                         .foregroundColor(.white)
                         .padding([.leading], audioPlayer.isPlaying == false ? 5: 0)
                 }
-                .padding()
-            }
+            }.padding(EdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 8))
 
             VStack {
                 HStack {
@@ -122,25 +125,25 @@ struct RecordItem: View {
                             .font(.system(size: 16))
                             .fontWeight(.semibold)
                             .foregroundColor(Color(red: 0.4, green: 0.4, blue: 0.4))
-                        Text("02:00")
+                        Text("\(getTimeFromFloat(time: duration))")
                             .font(.system(size: 14))
                             .fontWeight(.regular)
                             .foregroundColor(Color(red: 0.337, green: 0.718, blue: 0.902))
                     }
                     Spacer()
                     VStack {
-                        Text("Jun")
+                        Text("\(getMonthNamFromDate(date: createAt))")
                             .font(.system(size: 14))
                             .fontWeight(.regular)
                             .foregroundColor(Color(red: 0.576, green: 0.62, blue: 0.678))
-                        Text("10")
+                        Text("\(getDayFromDate(date: createAt))")
                             .font(.system(size: 18))
                             .fontWeight(.regular)
                             .foregroundColor(Color(red: 0.576, green: 0.62, blue: 0.678))
                     }
                 }
             }
-            .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 16))
+            .padding(.trailing, 16)
         }
         .background(.white)
         .cornerRadius(8)

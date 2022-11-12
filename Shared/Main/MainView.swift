@@ -13,7 +13,7 @@ struct MainView: View {
             VStack(alignment: .leading) {
                 switch viewRouter.currentPage {
                     case .record:
-                        RecordView(audioRecorder: AudioRecorder())
+                        RecordView(audioRecorder: audioRecorder)
                     case .audiogram:
                         AudiogramView()
                     case .folder:
