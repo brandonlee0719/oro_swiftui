@@ -25,7 +25,7 @@ struct MainView: View {
                 if(viewRouter.currentPage != .setting) {
                     ZStack {
                         if showPopUp {
-                            PlusMenu(widthAndHeight: geometry.size.width/7)
+                            RecordMenu(widthAndHeight: geometry.size.width/7)
                                 .offset(y: -geometry.size.height/6)
                         }
                         HStack {
@@ -56,7 +56,7 @@ struct MainView: View {
                             TabBarIcon(viewRouter: viewRouter, assignedPage: .folder, width: geometry.size.width/5, height: geometry.size.height/28, iconName: "tab_folder", tabName: "Folders")
                             TabBarIcon(viewRouter: viewRouter, assignedPage: .setting, width: geometry.size.width/5, height: geometry.size.height/28, iconName: "tab_setting", tabName: "Settings")
                         }
-                            .frame(width: geometry.size.width, height: geometry.size.height/896*100)
+                            // .frame(width: geometry.size.width, height: geometry.size.height/896*100)
                             .background(
                                 Image("Bg_tab")
                                     .resizable()
@@ -76,7 +76,7 @@ struct MainView_Previews: PreviewProvider {
     }
 }
 
-struct PlusMenu: View {
+struct RecordMenu: View {
     
     let widthAndHeight: CGFloat
     
