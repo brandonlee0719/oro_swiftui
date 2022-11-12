@@ -56,6 +56,12 @@ struct AudiogramView: View {
                     Spacer().frame(width:24)
                 }
                 HStack{
+                    Image(systemName: "magnifyingglass")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 20, height: 20)
+                        .foregroundColor(Color(red: 0.596, green: 0.635, blue: 0.643))
+                        .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 12))
                     TextField(
                         "Search",
                         text: $search

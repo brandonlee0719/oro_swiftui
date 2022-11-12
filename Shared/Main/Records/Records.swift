@@ -60,11 +60,17 @@ struct RecordView: View {
                     Spacer().frame(width:24)
                 }
                 HStack{
+                    Image(systemName: "magnifyingglass")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 16, height: 16)
+                        .foregroundColor(Color(red: 0.596, green: 0.635, blue: 0.643))
+                        .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 8))
                     TextField(
                         "Search",
                         text: $search
                     )
-                    .padding(EdgeInsets(top: 12, leading: 24, bottom: 12, trailing: 24))
+                    .padding(EdgeInsets(top: 12, leading: 0, bottom: 12, trailing: 12))
                 }
                     .background(.white)
                     .cornerRadius(8)
