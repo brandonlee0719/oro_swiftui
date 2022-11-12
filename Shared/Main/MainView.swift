@@ -47,7 +47,7 @@ struct MainView: View {
                                     .foregroundColor(.blue)
                                     .rotationEffect(Angle(degrees: showPopUp ? 90 : 0))
                             }
-                                .offset(y: -geometry.size.height/8/2)
+                                .offset(y: -geometry.size.height/8/2-6)
                                 .onTapGesture {
                                     withAnimation {
                                         showPopUp.toggle()
@@ -56,7 +56,7 @@ struct MainView: View {
                             TabBarIcon(viewRouter: viewRouter, assignedPage: .folder, width: geometry.size.width/5, height: geometry.size.height/28, iconName: "tab_folder", tabName: "Folders")
                             TabBarIcon(viewRouter: viewRouter, assignedPage: .setting, width: geometry.size.width/5, height: geometry.size.height/28, iconName: "tab_setting", tabName: "Settings")
                         }
-                            // .frame(width: geometry.size.width, height: geometry.size.height/896*100)
+                             .frame(width: geometry.size.width, height: geometry.size.height/896*100)
                             .background(
                                 Image("Bg_tab")
                                     .resizable()

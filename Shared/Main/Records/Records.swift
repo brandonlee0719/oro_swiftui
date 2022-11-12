@@ -78,7 +78,7 @@ struct RecordView: View {
                 Text("Recordings (24)")
                     .font(.system(size: 16))
                     .fontWeight(.semibold)
-                    .padding(EdgeInsets(top: 24, leading: 24, bottom: 8, trailing: 24))
+                    .padding(EdgeInsets(top: 10, leading: 24, bottom: 0, trailing: 24))
                 ScrollView {
                     RecordGroup(
                         date: "June 2022",
