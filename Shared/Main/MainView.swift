@@ -4,8 +4,7 @@ import SwiftUI
 struct MainView: View {
     
     @StateObject var viewRouter: MainRouter
-    
-    @State var isRecording = false
+    @ObservedObject var audioRecorder: AudioRecorder
 
     let background = LinearGradient(gradient: Gradient(colors: [Color(red: 76/255, green: 76/255, blue: 76/255), Color(red: 41/255, green: 41/255, blue: 41/255)]), startPoint: .top, endPoint: .bottom)
     
@@ -24,7 +23,7 @@ struct MainView: View {
                 }
                 if(viewRouter.currentPage != .setting) {
                     ZStack {
-                        if isRecording {
+                        if (audioRecorder.recording) {
                             RecordMenu(widthAndHeight: geometry.size.width/7)
                                 .offset(y: -geometry.size.height/6)
                         }
@@ -37,7 +36,7 @@ struct MainView: View {
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: geometry.size.width/5 , height: geometry.size.width/5)
                                     .foregroundColor(.blue)
-                                if(isRecording) {
+                                if(audioRecorder.recording) {
                                     Image(systemName: "stop.fill")
                                         .resizable()
                                         .padding(16)
@@ -54,8 +53,10 @@ struct MainView: View {
                             }
                                 .offset(y: -geometry.size.height/8/2-6)
                                 .onTapGesture {
-                                    withAnimation {
-                                        isRecording.toggle()
+                                    if(audioRecorder.recording == false) {
+                                        self.audioRecorder.startRecording()
+                                    } else {
+                                        self.audioRecorder.stopRecording()
                                     }
                                 }
                             TabBarIcon(viewRouter: viewRouter, assignedPage: .folder, width: geometry.size.width/5, height: geometry.size.height/28, iconName: "tab_folder", tabName: "Folders")
@@ -77,7 +78,7 @@ struct MainView: View {
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView(viewRouter: MainRouter())
+        MainView(viewRouter: MainRouter(), audioRecorder: AudioRecorder())
     }
 }
 

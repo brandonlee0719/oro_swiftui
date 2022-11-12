@@ -16,7 +16,7 @@ struct SigninView: View {
     @State var signInProcessing = false
     @State var signInErrorMessage = ""
     
-    let main = MainView(viewRouter: MainRouter())
+    let main = MainView(viewRouter: MainRouter(), audioRecorder: AudioRecorder())
     let signup = SignupView()
     
     let background = LinearGradient(gradient: Gradient(colors: [Color(red: 86/255, green: 183/255, blue: 230/255), Color(red: 121/255, green: 211/255, blue: 255/255)]), startPoint: .top, endPoint: .bottom)
@@ -35,20 +35,23 @@ struct SigninView: View {
                     SignInCredentialFields(email: $email, password: $password)
                     NavigationLink(destination: main.navigationBarHidden(true), tag: 1, selection: $selection) {
                         Button(action: {
-//                            self.selection = 1
                             signInUser(userEmail: email, userPassword: password)
                         }) {
-                            Text("Log In")
-                                .frame(minWidth: 0, maxWidth: .infinity)
-                                .font(.system(size: 18))
-                                .padding()
-                                .foregroundColor(Color(red: 0.337, green: 0.718, blue: 0.902))
+                            if(signInProcessing) {
+                                ProgressView()
+                                    .padding()
+                                    .frame(minWidth: 0, maxWidth: .infinity)
+                            } else {
+                                Text("Log In")
+                                    .frame(minWidth: 0, maxWidth: .infinity)
+                                    .font(.system(size: 18))
+                                    .padding()
+                                    .foregroundColor(Color(red: 0.337, green: 0.718, blue: 0.902))
+                            }
+                            
                         }
                         .background(.white)
                         .cornerRadius(8)
-                    }
-                    if signInProcessing {
-                        ProgressView()
                     }
                     if !signInErrorMessage.isEmpty {
                         Text("Failed creating account: \(signInErrorMessage)")

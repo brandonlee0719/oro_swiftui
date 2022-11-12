@@ -23,7 +23,7 @@ struct SignupView: View {
     @State var signUpProcessing = false
     @State var signUpErrorMessage = ""
 
-    let main = MainView(viewRouter: MainRouter())
+    let main = MainView(viewRouter: MainRouter(), audioRecorder: AudioRecorder())
     let background = LinearGradient(gradient: Gradient(colors: [Color(red: 86/255, green: 183/255, blue: 230/255), Color(red: 121/255, green: 211/255, blue: 255/255)]), startPoint: .top, endPoint: .bottom)
     
     var body: some View {
@@ -39,18 +39,20 @@ struct SignupView: View {
                     Button(action: {
                         signUpUser(userEmail: email, userPassword: password)
                     }) {
-                        Text("Create Account")
-                            .frame(minWidth: 0, maxWidth: .infinity)
-                            .font(.system(size: 18))
-                            .padding()
-                            .foregroundColor(Color(red: 0.337, green: 0.718, blue: 0.902))
+                        if signUpProcessing {
+                            ProgressView()
+                                .padding()
+                                .frame(minWidth: 0, maxWidth: .infinity)
+                        } else {
+                            Text("Create Account")
+                                .frame(minWidth: 0, maxWidth: .infinity)
+                                .font(.system(size: 18))
+                                .padding()
+                                .foregroundColor(Color(red: 0.337, green: 0.718, blue: 0.902))
+                        }
                     }
                         .background(.white)
                         .cornerRadius(8)
-                        // .disabled(!signUpProcessing && !email.isEmpty && !password.isEmpty && !passwordConfirmation.isEmpty && password == passwordConfirmation ? false : true)
-                }
-                if signUpProcessing {
-                    ProgressView()
                 }
                 if !signUpErrorMessage.isEmpty {
                     Text("Failed creating account: \(signUpErrorMessage)")
