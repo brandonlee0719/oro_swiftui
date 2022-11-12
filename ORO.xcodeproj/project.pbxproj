@@ -25,6 +25,16 @@
 		04FEB40529070B6B008844DE /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FEB3DB29070B66008844DE /* SplashView.swift */; };
 		04FEB40629070B6B008844DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04FEB3DC29070B6A008844DE /* Assets.xcassets */; };
 		04FEB40729070B6B008844DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04FEB3DC29070B6A008844DE /* Assets.xcassets */; };
+		A721A9DA291FCD89005E043B /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A721A9D9291FCD89005E043B /* AudioPlayer.swift */; };
+		A721A9DB291FCD89005E043B /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A721A9D9291FCD89005E043B /* AudioPlayer.swift */; };
+		A721A9DD291FCDD7005E043B /* AudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A721A9DC291FCDD7005E043B /* AudioRecorder.swift */; };
+		A721A9DE291FCDD7005E043B /* AudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A721A9DC291FCDD7005E043B /* AudioRecorder.swift */; };
+		A721A9E0291FCEA2005E043B /* AudioExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A721A9DF291FCEA2005E043B /* AudioExtensions.swift */; };
+		A721A9E1291FCEA2005E043B /* AudioExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A721A9DF291FCEA2005E043B /* AudioExtensions.swift */; };
+		A721A9E3291FCEDE005E043B /* AudioHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A721A9E2291FCEDE005E043B /* AudioHelper.swift */; };
+		A721A9E4291FCEDE005E043B /* AudioHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A721A9E2291FCEDE005E043B /* AudioHelper.swift */; };
+		A721A9E6291FCF15005E043B /* AudioRecodingDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A721A9E5291FCF15005E043B /* AudioRecodingDataModel.swift */; };
+		A721A9E7291FCF15005E043B /* AudioRecodingDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A721A9E5291FCF15005E043B /* AudioRecodingDataModel.swift */; };
 		A7C077E8291E6F040011C3A6 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = A7C077E7291E6F040011C3A6 /* FirebaseAnalytics */; };
 		A7C077EA291E6F040011C3A6 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A7C077E9291E6F040011C3A6 /* FirebaseAuth */; };
 		A7C077EC291E6F040011C3A6 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = A7C077EB291E6F040011C3A6 /* FirebaseDatabase */; };
@@ -74,6 +84,11 @@
 		04FEB3FA29070B6B008844DE /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04FEB3FE29070B6B008844DE /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		04FEB40029070B6B008844DE /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
+		A721A9D9291FCD89005E043B /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		A721A9DC291FCDD7005E043B /* AudioRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorder.swift; sourceTree = "<group>"; };
+		A721A9DF291FCEA2005E043B /* AudioExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioExtensions.swift; sourceTree = "<group>"; };
+		A721A9E2291FCEDE005E043B /* AudioHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioHelper.swift; sourceTree = "<group>"; };
+		A721A9E5291FCF15005E043B /* AudioRecodingDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecodingDataModel.swift; sourceTree = "<group>"; };
 		A7C077F3291E6FF60011C3A6 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		A7C077FF291ECA8D0011C3A6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -192,6 +207,7 @@
 		04FEB3D929070B65008844DE /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				A721A9D6291FCD17005E043B /* Audio Manager */,
 				A7C077FF291ECA8D0011C3A6 /* GoogleService-Info.plist */,
 				0473AC7A290BB9D300ABB348 /* Main */,
 				046903FF2909263400A232D7 /* Auth */,
@@ -237,6 +253,18 @@
 				04FEB40029070B6B008844DE /* Tests_macOSLaunchTests.swift */,
 			);
 			path = "Tests macOS";
+			sourceTree = "<group>";
+		};
+		A721A9D6291FCD17005E043B /* Audio Manager */ = {
+			isa = PBXGroup;
+			children = (
+				A721A9D9291FCD89005E043B /* AudioPlayer.swift */,
+				A721A9DC291FCDD7005E043B /* AudioRecorder.swift */,
+				A721A9DF291FCEA2005E043B /* AudioExtensions.swift */,
+				A721A9E2291FCEDE005E043B /* AudioHelper.swift */,
+				A721A9E5291FCF15005E043B /* AudioRecodingDataModel.swift */,
+			);
+			path = "Audio Manager";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -411,15 +439,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				0473AC83290BBBE500ABB348 /* Records.swift in Sources */,
+				A721A9E0291FCEA2005E043B /* AudioExtensions.swift in Sources */,
 				04FEB40429070B6B008844DE /* SplashView.swift in Sources */,
+				A721A9DA291FCD89005E043B /* AudioPlayer.swift in Sources */,
 				0473AC88290BC0E100ABB348 /* MainView.swift in Sources */,
 				0473AC86290BBDDB00ABB348 /* Folders.swift in Sources */,
 				A7C077F4291E6FF60011C3A6 /* SignupView.swift in Sources */,
+				A721A9DD291FCDD7005E043B /* AudioRecorder.swift in Sources */,
+				A721A9E3291FCEDE005E043B /* AudioHelper.swift in Sources */,
 				04FEB40229070B6B008844DE /* OROApp.swift in Sources */,
 				0473AC7F290BBBAF00ABB348 /* Settings.swift in Sources */,
 				0473AC81290BBBCD00ABB348 /* Audiograms.swift in Sources */,
 				046904012909267900A232D7 /* SigninView.swift in Sources */,
 				0473AC8A290BC94300ABB348 /* MainRouter.swift in Sources */,
+				A721A9E6291FCF15005E043B /* AudioRecodingDataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,9 +460,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A721A9DE291FCDD7005E043B /* AudioRecorder.swift in Sources */,
 				A7C077F5291E6FF60011C3A6 /* SignupView.swift in Sources */,
+				A721A9E7291FCF15005E043B /* AudioRecodingDataModel.swift in Sources */,
 				04FEB40529070B6B008844DE /* SplashView.swift in Sources */,
+				A721A9DB291FCD89005E043B /* AudioPlayer.swift in Sources */,
 				04FEB40329070B6B008844DE /* OROApp.swift in Sources */,
+				A721A9E1291FCEA2005E043B /* AudioExtensions.swift in Sources */,
+				A721A9E4291FCEDE005E043B /* AudioHelper.swift in Sources */,
 				046904022909267900A232D7 /* SigninView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

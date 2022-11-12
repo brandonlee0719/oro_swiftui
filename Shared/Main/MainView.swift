@@ -5,7 +5,7 @@ struct MainView: View {
     
     @StateObject var viewRouter: MainRouter
     
-    @State var showPopUp = false
+    @State var isRecording = false
 
     let background = LinearGradient(gradient: Gradient(colors: [Color(red: 76/255, green: 76/255, blue: 76/255), Color(red: 41/255, green: 41/255, blue: 41/255)]), startPoint: .top, endPoint: .bottom)
     
@@ -24,7 +24,7 @@ struct MainView: View {
                 }
                 if(viewRouter.currentPage != .setting) {
                     ZStack {
-                        if showPopUp {
+                        if isRecording {
                             RecordMenu(widthAndHeight: geometry.size.width/7)
                                 .offset(y: -geometry.size.height/6)
                         }
@@ -32,25 +32,30 @@ struct MainView: View {
                             TabBarIcon(viewRouter: viewRouter, assignedPage: .record, width: geometry.size.width/5, height: geometry.size.height/28, iconName: "tab_record", tabName: "Records")
                             TabBarIcon(viewRouter: viewRouter, assignedPage: .audiogram, width: geometry.size.width/5, height: geometry.size.height/28, iconName: "tab_audiogram", tabName: "Audiograms")
                             ZStack {
-                                
                                 Image("Btn_center")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: geometry.size.width/5 , height: geometry.size.width/5)
                                     .foregroundColor(.blue)
-                                    .rotationEffect(Angle(degrees: showPopUp ? 90 : 0))
-                                Image("Logo")
-                                    .resizable()
-                                    .padding(16)
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: geometry.size.width/5 , height: geometry.size.width/5)
-                                    .foregroundColor(.blue)
-                                    .rotationEffect(Angle(degrees: showPopUp ? 90 : 0))
+                                if(isRecording) {
+                                    Image(systemName: "stop.fill")
+                                        .resizable()
+                                        .padding(16)
+                                        .aspectRatio(contentMode: .fit)
+                                        .foregroundColor(.white)
+                                        .frame(width: geometry.size.width/7 , height: geometry.size.width/7)
+                                } else {
+                                    Image("Logo")
+                                        .resizable()
+                                        .padding(16)
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: geometry.size.width/5 , height: geometry.size.width/5)
+                                }
                             }
                                 .offset(y: -geometry.size.height/8/2-6)
                                 .onTapGesture {
                                     withAnimation {
-                                        showPopUp.toggle()
+                                        isRecording.toggle()
                                     }
                                 }
                             TabBarIcon(viewRouter: viewRouter, assignedPage: .folder, width: geometry.size.width/5, height: geometry.size.height/28, iconName: "tab_folder", tabName: "Folders")
