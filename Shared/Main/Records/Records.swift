@@ -79,32 +79,16 @@ struct RecordView: View {
                     .font(.system(size: 16))
                     .fontWeight(.semibold)
                     .padding(EdgeInsets(top: 24, leading: 24, bottom: 8, trailing: 24))
-                List {
-                    Section(header: Text("June 2021")) {
-                        ForEach(records, id: \.id) { recordData in
-                            RecordItem(
-                                playStatus: recordData.playStatus,
-                                title: recordData.title,
-                                detail: recordData.detail,
-                                duration: recordData.duration,
-                                month: recordData.month,
-                                date: recordData.date)
-                        }
-                    }
-
-                    Section(header: Text("May 2021")) {
-                        ForEach(records, id: \.id) { recordData in
-                            RecordItem(
-                                playStatus: recordData.playStatus,
-                                title: recordData.title,
-                                detail: recordData.detail,
-                                duration: recordData.duration,
-                                month: recordData.month,
-                                date: recordData.date)
-                        }
-                    }
+                ScrollView {
+                    RecordGroup(
+                        date: "June 2022",
+                        data: records
+                    )
+                    RecordGroup(
+                        date: "Apirl 2022",
+                        data: records
+                    )
                 }
-                .padding(EdgeInsets(top: -10, leading: 0, bottom: -10, trailing: 0))
             }
         }
         .background(Color(red: 0.949, green: 0.957, blue: 0.98))
@@ -127,7 +111,7 @@ struct RecordItem: View {
     let date: String
 
     var body: some View {
-        HStack(alignment: .center, spacing: 16)
+        HStack(alignment: .center)
         {
             ZStack {
                 RoundedRectangle(cornerRadius:6, style: .continuous)
@@ -143,6 +127,7 @@ struct RecordItem: View {
                     .foregroundColor(.white)
                     .padding([.leading], playStatus == 0 ? 5: 0)
             }
+            .padding()
 
             VStack {
                 HStack {
@@ -177,7 +162,35 @@ struct RecordItem: View {
                     }
                 }
             }
-            
+            .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 16))
         }
+        .background(.white)
+        .cornerRadius(8)
     }
 }
+
+struct RecordGroup: View {
+
+    let date: String
+    let data: Array<RecordData>
+
+    var body: some View {
+        VStack(alignment: .leading)
+        {
+            Text(date)
+                .font(.system(size: 14))
+                .foregroundColor(Color(red: 0.4, green: 0.4, blue: 0.4))
+            ForEach(data, id: \.id) { item in
+                RecordItem(
+                    playStatus: item.playStatus,
+                    title: item.title,
+                    detail: item.detail,
+                    duration: item.duration,
+                    month: item.month,
+                    date: item.date)
+            }
+        }
+        .padding(EdgeInsets(top: 0, leading: 24, bottom: 16, trailing: 24))
+    }
+}
+
