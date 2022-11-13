@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 import AVFoundation
 import Combine
+import FirebaseStorage
 
 class AudioRecorder: NSObject,ObservableObject {
     
@@ -16,7 +17,9 @@ class AudioRecorder: NSObject,ObservableObject {
         super.init()
         fetchRecordings()
     }
-    
+
+    var fileURL: URL?
+
     let objectWillChange = PassthroughSubject<AudioRecorder, Never>()
     
     var audioRecorder: AVAudioRecorder!
@@ -41,7 +44,8 @@ class AudioRecorder: NSObject,ObservableObject {
         
         let documentPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let audioFilename = documentPath.appendingPathComponent("\(Date().toString(dateFormat: "dd-MM-YY_'at'_HH:mm:ss")).m4a")
-        
+        self.fileURL = audioFilename
+
         let settings = [
             AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
             AVSampleRateKey: 12000,
@@ -63,6 +67,7 @@ class AudioRecorder: NSObject,ObservableObject {
         audioRecorder.stop()
         recording = false
         
+        uploadAudioToFirestore()
         fetchRecordings()
     }
     
@@ -99,6 +104,30 @@ class AudioRecorder: NSObject,ObservableObject {
         }
         
         fetchRecordings()
+    }
+
+    func uploadAudioToFirestore() {
+        let storageRef = Storage.storage().reference()
+                
+        let localfile = self.fileURL ?? URL(string: "")
+        
+        let fileRef = storageRef.child("records/try.m4a")
+        
+        fileRef.putFile(from: localfile!, metadata: nil) { metaData, err in
+            guard metaData != nil else { return }
+
+            if let err = err {
+                print(err.localizedDescription)
+                return
+            }
+
+            fileRef.downloadURL { (url, err) in
+                guard let downloadUrl = url else { return }
+
+                print(downloadUrl)
+            }
+
+        }
     }
     
 }

@@ -207,7 +207,8 @@
 		04FEB3D929070B65008844DE /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				A721A9D6291FCD17005E043B /* Audio Manager */,
+				A721A9E829212EDA005E043B /* StorageManager */,
+				A721A9D6291FCD17005E043B /* AudioManager */,
 				A7C077FF291ECA8D0011C3A6 /* GoogleService-Info.plist */,
 				0473AC7A290BB9D300ABB348 /* Main */,
 				046903FF2909263400A232D7 /* Auth */,
@@ -255,7 +256,7 @@
 			path = "Tests macOS";
 			sourceTree = "<group>";
 		};
-		A721A9D6291FCD17005E043B /* Audio Manager */ = {
+		A721A9D6291FCD17005E043B /* AudioManager */ = {
 			isa = PBXGroup;
 			children = (
 				A721A9D9291FCD89005E043B /* AudioPlayer.swift */,
@@ -264,7 +265,14 @@
 				A721A9E2291FCEDE005E043B /* AudioHelper.swift */,
 				A721A9E5291FCF15005E043B /* AudioRecodingDataModel.swift */,
 			);
-			path = "Audio Manager";
+			path = AudioManager;
+			sourceTree = "<group>";
+		};
+		A721A9E829212EDA005E043B /* StorageManager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = StorageManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
