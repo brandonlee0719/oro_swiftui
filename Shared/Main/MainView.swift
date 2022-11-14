@@ -90,7 +90,6 @@ struct RecordMenu: View {
         HStack(spacing: 50) {
             ZStack {
                 Circle()
-                    .foregroundColor(Color("DarkPurple"))
                     .frame(width: widthAndHeight, height: widthAndHeight)
                 Image(systemName: "record.circle")
                     .resizable()
@@ -101,7 +100,6 @@ struct RecordMenu: View {
             }
             ZStack {
                 Circle()
-                    .foregroundColor(Color("DarkPurple"))
                     .frame(width: widthAndHeight, height: widthAndHeight)
                 Image(systemName: "folder")
                     .resizable()

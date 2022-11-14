@@ -19,7 +19,6 @@ struct SettingView: View {
                 HStack {
                     Spacer()
                     Button(action: {
-                            print("helloooooooooooooooooo")
                             viewRouter.currentPage = .record
                         }) {
                             Image(systemName: "xmark")

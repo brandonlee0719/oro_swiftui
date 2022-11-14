@@ -76,19 +76,40 @@ class AudioRecorder: NSObject,ObservableObject {
         
         let fileManager = FileManager.default
         let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        let directoryContents = try! fileManager.contentsOfDirectory(at: documentDirectory, includingPropertiesForKeys: nil)
-                
-        for audio in directoryContents {
-            let audioAsset = AVURLAsset.init(url: audio, options: nil)
-            let duration = audioAsset.duration
-            let durationInSeconds = CMTimeGetSeconds(duration)
-            
-            let recording = Recording(fileURL: audio, createdAt: getCreationDate(for: audio), duration: Float(durationInSeconds))
-            recordings.append(recording)
+
+        let storageRef = Storage.storage().reference()
+        let folderRef = storageRef.child("records")
+
+        folderRef.listAll { (result, error) in
+            if let error = error {
+                print("\(error)")
+            }
+            for item in result!.items {
+                let audioURL = documentDirectory.appendingPathComponent("\(item.name)")
+                item.getData(maxSize: 1 * 1024 * 1024 * 1024) { data, error in
+                    if let error = error {
+                        print("\(error)")
+                    }
+                    if let d = data {
+                        do {
+                            try d.write(to: audioURL)
+                            let audioAsset = AVURLAsset.init(url: audioURL, options: nil)
+                            let duration = audioAsset.duration
+                            let durationInSeconds = CMTimeGetSeconds(duration)
+                            
+                            let recording = Recording(fileURL: audioURL, createdAt: getCreationDate(for: audioURL), duration: Float(durationInSeconds))
+                            self.recordings.append(recording)
+                        } catch {
+                            print(error)
+                        }
+                    }
+                }
+//                self.recordings.sort(by: { $1.createdAt.compare($0.createdAt) == .orderedAscending})
+//                self.objectWillChange.send(self)
+            }
         }
-        
         recordings.sort(by: { $1.createdAt.compare($0.createdAt) == .orderedAscending})
-        
+                
         objectWillChange.send(self)
     }
     
@@ -111,7 +132,7 @@ class AudioRecorder: NSObject,ObservableObject {
                 
         let localfile = self.fileURL ?? URL(string: "")
         
-        let fileRef = storageRef.child("records/try.m4a")
+        let fileRef = storageRef.child("records/\(self.fileURL!.lastPathComponent)")
         
         fileRef.putFile(from: localfile!, metadata: nil) { metaData, err in
             guard metaData != nil else { return }
