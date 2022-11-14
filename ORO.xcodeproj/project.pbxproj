@@ -35,6 +35,7 @@
 		A721A9E4291FCEDE005E043B /* AudioHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A721A9E2291FCEDE005E043B /* AudioHelper.swift */; };
 		A721A9E6291FCF15005E043B /* AudioRecodingDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A721A9E5291FCF15005E043B /* AudioRecodingDataModel.swift */; };
 		A721A9E7291FCF15005E043B /* AudioRecodingDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A721A9E5291FCF15005E043B /* AudioRecodingDataModel.swift */; };
+		A72F7F142922B15C00C093F4 /* Waveform in Frameworks */ = {isa = PBXBuildFile; productRef = A72F7F132922B15C00C093F4 /* Waveform */; };
 		A7C077E8291E6F040011C3A6 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = A7C077E7291E6F040011C3A6 /* FirebaseAnalytics */; };
 		A7C077EA291E6F040011C3A6 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A7C077E9291E6F040011C3A6 /* FirebaseAuth */; };
 		A7C077EC291E6F040011C3A6 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = A7C077EB291E6F040011C3A6 /* FirebaseDatabase */; };
@@ -103,6 +104,7 @@
 				A7C077F0291E6F040011C3A6 /* FirebaseMessaging in Frameworks */,
 				A7C077E8291E6F040011C3A6 /* FirebaseAnalytics in Frameworks */,
 				A7C077EA291E6F040011C3A6 /* FirebaseAuth in Frameworks */,
+				A72F7F142922B15C00C093F4 /* Waveform in Frameworks */,
 				A7C077F2291E6F040011C3A6 /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -298,6 +300,7 @@
 				A7C077ED291E6F040011C3A6 /* FirebaseFirestore */,
 				A7C077EF291E6F040011C3A6 /* FirebaseMessaging */,
 				A7C077F1291E6F040011C3A6 /* FirebaseStorage */,
+				A72F7F132922B15C00C093F4 /* Waveform */,
 			);
 			productName = "ORO (iOS)";
 			productReference = 04FEB3E129070B6B008844DE /* ORO.app */;
@@ -393,6 +396,7 @@
 			mainGroup = 04FEB3D429070B65008844DE;
 			packageReferences = (
 				A7C077E6291E6F040011C3A6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				A72F7F122922B15C00C093F4 /* XCRemoteSwiftPackageReference "Waveform" */,
 			);
 			productRefGroup = 04FEB3E229070B6B008844DE /* Products */;
 			projectDirPath = "";
@@ -862,6 +866,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		A72F7F122922B15C00C093F4 /* XCRemoteSwiftPackageReference "Waveform" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pixlwave/Waveform";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		A7C077E6291E6F040011C3A6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -873,6 +885,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		A72F7F132922B15C00C093F4 /* Waveform */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A72F7F122922B15C00C093F4 /* XCRemoteSwiftPackageReference "Waveform" */;
+			productName = Waveform;
+		};
 		A7C077E7291E6F040011C3A6 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A7C077E6291E6F040011C3A6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
