@@ -53,9 +53,11 @@ struct RecordView: View {
                     .padding(EdgeInsets(top: 10, leading: 24, bottom: 0, trailing: 24))
                 ScrollView {
                     VStack {
-//                        ProgressView()
-//                            .padding()
-//                            .frame(minWidth: 0, maxWidth: .infinity)
+                        if(audioRecorder.uploading) {
+                            ProgressView()
+                                .padding()
+                                .frame(minWidth: 0, maxWidth: .infinity)
+                        }
                         ForEach(audioRecorder.recordings, id: \.createdAt) { recording in
                             RecordItem(
                                 audioURL: recording.fileURL,

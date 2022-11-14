@@ -31,6 +31,12 @@ class AudioRecorder: NSObject,ObservableObject {
             objectWillChange.send(self)
         }
     }
+
+    var uploading = true {
+        didSet {
+            objectWillChange.send(self)
+        }
+    }
     
     func startRecording() {
         let recordingSession = AVAudioSession.sharedInstance()
@@ -103,8 +109,10 @@ class AudioRecorder: NSObject,ObservableObject {
                                 print(error)
                             }
                             self.recordings.sort(by: { $1.createdAt.compare($0.createdAt) == .orderedAscending})
-                            self.objectWillChange.send(self)
+                            // self.objectWillChange.send(self)
                         }
+                        self.uploading = false
+                        self.objectWillChange.send(self)
                     }
                 }
             }
@@ -126,6 +134,9 @@ class AudioRecorder: NSObject,ObservableObject {
     }
 
     func uploadAudioToFirestore() {
+        
+        uploading = true
+        
         let storageRef = Storage.storage().reference()
                 
         let localfile = self.fileURL ?? URL(string: "")
