@@ -68,7 +68,6 @@ class AudioRecorder: NSObject,ObservableObject {
         recording = false
         
         uploadAudioToFirestore()
-        fetchRecordings()
     }
     
     func fetchRecordings() {
@@ -84,33 +83,32 @@ class AudioRecorder: NSObject,ObservableObject {
             if let error = error {
                 print("\(error)")
             }
-            for item in result!.items {
-                let audioURL = documentDirectory.appendingPathComponent("\(item.name)")
-                item.getData(maxSize: 1 * 1024 * 1024 * 1024) { data, error in
-                    if let error = error {
-                        print("\(error)")
-                    }
-                    if let d = data {
-                        do {
-                            try d.write(to: audioURL)
-                            let audioAsset = AVURLAsset.init(url: audioURL, options: nil)
-                            let duration = audioAsset.duration
-                            let durationInSeconds = CMTimeGetSeconds(duration)
-                            
-                            let recording = Recording(fileURL: audioURL, createdAt: getCreationDate(for: audioURL), duration: Float(durationInSeconds))
-                            self.recordings.append(recording)
-                        } catch {
-                            print(error)
+            if(result != nil) {
+                for item in result!.items {
+                    let audioURL = documentDirectory.appendingPathComponent("\(item.name)")
+                    item.getData(maxSize: 1 * 1024 * 1024 * 1024) { data, error in
+                        if let error = error {
+                            print("\(error)")
+                        }
+                        if let d = data {
+                            do {
+                                try d.write(to: audioURL)
+                                let audioAsset = AVURLAsset.init(url: audioURL, options: nil)
+                                let duration = audioAsset.duration
+                                let durationInSeconds = CMTimeGetSeconds(duration)
+                                
+                                let recording = Recording(fileURL: audioURL, createdAt: getCreationDate(for: audioURL), duration: Float(durationInSeconds))
+                                self.recordings.append(recording)
+                            } catch {
+                                print(error)
+                            }
+                            self.recordings.sort(by: { $1.createdAt.compare($0.createdAt) == .orderedAscending})
+                            self.objectWillChange.send(self)
                         }
                     }
                 }
-//                self.recordings.sort(by: { $1.createdAt.compare($0.createdAt) == .orderedAscending})
-//                self.objectWillChange.send(self)
             }
         }
-        recordings.sort(by: { $1.createdAt.compare($0.createdAt) == .orderedAscending})
-                
-        objectWillChange.send(self)
     }
     
     func deleteRecording(urlsToDelete: [URL]) {
@@ -146,6 +144,7 @@ class AudioRecorder: NSObject,ObservableObject {
                 guard let downloadUrl = url else { return }
 
                 print(downloadUrl)
+                self.fetchRecordings()
             }
 
         }
