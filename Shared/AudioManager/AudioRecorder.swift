@@ -83,7 +83,7 @@ class AudioRecorder: NSObject,ObservableObject {
         let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
 
         let storageRef = Storage.storage().reference()
-        let folderRef = storageRef.child("records")
+        let folderRef = storageRef.child("\(LocalStorage.uidValue)/records")
 
         folderRef.listAll { (result, error) in
             if let error = error {
@@ -141,7 +141,7 @@ class AudioRecorder: NSObject,ObservableObject {
                 
         let localfile = self.fileURL ?? URL(string: "")
         
-        let fileRef = storageRef.child("records/\(self.fileURL!.lastPathComponent)")
+        let fileRef = storageRef.child("\(LocalStorage.uidValue)/records/\(self.fileURL!.lastPathComponent)")
         
         fileRef.putFile(from: localfile!, metadata: nil) { metaData, err in
             guard metaData != nil else { return }

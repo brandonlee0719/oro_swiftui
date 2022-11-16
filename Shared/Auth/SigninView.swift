@@ -95,6 +95,7 @@ struct SigninView: View {
                     signInProcessing = false
                 case .some(_):
                     print("User signed in")
+                    LocalStorage.uidValue = authResult!.user.uid
                     signInProcessing = false
                     self.selection = 1
             }
