@@ -64,8 +64,8 @@ struct ChooseRecords: View {
                 Text("You can add Records to this Folder\nfrom your list")
                     .font(.system(size: 16))
                     .foregroundColor(Color(red: 0.576, green: 0.62, blue: 0.678))
+                    .multilineTextAlignment(.center)
                     .padding()
-
                 ScrollView {
                     VStack {
                         ForEach(audioRecorder.recordings, id: \.createdAt) { recording in
