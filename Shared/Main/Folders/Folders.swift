@@ -71,12 +71,25 @@ struct FolderView: View {
                     .background(.white)
                     .cornerRadius(8)
                     .padding(EdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 24))
-                Text("Folders (24)")
+                Text("Folders (\(folders.count))")
                     .font(.system(size: 16))
                     .fontWeight(.semibold)
                     .padding(EdgeInsets(top: 24, leading: 24, bottom: 8, trailing: 24))
-                List {
-                    Section(header: Text("Folders (\(folders.count))")) {
+                // List {
+                //     Section(header: Text("Folders (\(folders.count))")) {
+                //         ForEach(folders, id: \.id) { folderData in
+                //             FolderItem(
+                //                 security: folderData.security,
+                //                 title: folderData.title,
+                //                 lastDate: folderData.lastDate,
+                //                 records: folderData.records)
+                //         }
+                //     }
+                // }
+                // .padding(EdgeInsets(top: -10, leading: 0, bottom: -10, trailing: 0))
+
+                ScrollView {
+                    VStack {
                         ForEach(folders, id: \.id) { folderData in
                             FolderItem(
                                 security: folderData.security,
@@ -85,8 +98,8 @@ struct FolderView: View {
                                 records: folderData.records)
                         }
                     }
+                    .padding(EdgeInsets(top: 0, leading: 24, bottom: 16, trailing: 24))
                 }
-                .padding(EdgeInsets(top: -10, leading: 0, bottom: -10, trailing: 0))
             }
         }
         .background(Color(red: 0.949, green: 0.957, blue: 0.98))
@@ -107,50 +120,55 @@ struct FolderItem: View {
     let records: Int
 
     var body: some View {
-        HStack(alignment: .center, spacing: 16)
-        {
-            ZStack {
-                RoundedRectangle(cornerRadius:6, style: .continuous)
-                    .foregroundColor(.white)
-                    .frame(width: 64, height: 64)
-                Image("folder")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 40, height: 32)
-                    .foregroundColor(.white)
-                    .padding([.leading], security == 0 ? 5: 0)
-                Image(systemName: security == 0 ? "play.fill" : "lock.fill")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 10, height: 10)
-                    .foregroundColor(.white)
-                    .padding([.leading], security == 0 ? 5: 0)
-            }
+        Button(action: {
+            print("------------>")
+        }) {
+            HStack(alignment: .center)
+            {
+                ZStack {
+                    RoundedRectangle(cornerRadius:6, style: .continuous)
+                        .foregroundColor(.white)
+                        .frame(width: 64, height: 64)
+                    Image("folder")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 60, height: 60)
+                        .foregroundColor(.white)
+                    Image(systemName: security == 0 ? "play.fill" : "lock.fill")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 14, height: 14)
+                        .foregroundColor(.white)
+                }.padding()
 
-            VStack {
-                HStack {
-                    Text(title)
-                        .font(.system(size: 14))
-                        .fontWeight(.regular)
-                        .foregroundColor(Color(red: 0.4, green: 0.4, blue: 0.4))
-                    Spacer()
-                    Image(systemName: "ellipsis")
-                }
-                HStack {
-                    VStack(alignment: .leading, spacing: 0) {
-                        Text("\(records) Records")
-                            .font(.system(size: 14))
-                            .fontWeight(.regular)
-                            .foregroundColor(Color(red: 0.337, green: 0.718, blue: 0.902))
-                        Text("Last edit: \(lastDate)")
-                            .font(.system(size: 12))
+                VStack {
+                    HStack {
+                        Text(title)
+                            .font(.system(size: 16))
                             .fontWeight(.semibold)
+                            .foregroundColor(Color(red: 0.4, green: 0.4, blue: 0.4))
+                        Spacer()
+                        Image(systemName: "ellipsis")
                             .foregroundColor(Color(red: 0.576, green: 0.62, blue: 0.678))
                     }
-                    Spacer()
+                    HStack {
+                        VStack(alignment: .leading, spacing: 0) {
+                            Text("\(records) Records")
+                                .font(.system(size: 14))
+                                .fontWeight(.regular)
+                                .foregroundColor(Color(red: 0.337, green: 0.718, blue: 0.902))
+                            Text("Last edit: \(lastDate)")
+                                .font(.system(size: 12))
+                                .fontWeight(.regular)
+                                .foregroundColor(Color(red: 0.576, green: 0.62, blue: 0.678))
+                        }
+                        Spacer()
+                    }
                 }
             }
-            
         }
+        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 16))
+        .background(.white)
+        .cornerRadius(8)
     }
 }

@@ -47,7 +47,7 @@ struct RecordView: View {
                     .background(.white)
                     .cornerRadius(8)
                     .padding(EdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 24))
-                Text("Recordings (24)")
+                Text("Recordings (\(audioRecorder.recordings.count))")
                     .font(.system(size: 16))
                     .fontWeight(.semibold)
                     .padding(EdgeInsets(top: 10, leading: 24, bottom: 0, trailing: 24))
@@ -122,7 +122,7 @@ struct RecordItem: View {
                         .fontWeight(.regular)
                         .foregroundColor(Color(red: 0.576, green: 0.62, blue: 0.678))
                     Spacer()
-                    Image(systemName: "ellipsis")
+                    Image(systemName: "ellipsis").foregroundColor(Color(red: 0.576, green: 0.62, blue: 0.678))
                 }
                 HStack {
                     VStack(alignment: .leading, spacing: 0) {
