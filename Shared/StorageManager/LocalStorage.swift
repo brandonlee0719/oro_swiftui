@@ -9,7 +9,7 @@ import Foundation
  
 class LocalStorage {
      
-    private static let uidKey: String = "uID"
+    private static let uidKey: String = "uid"
      
     public static var uidValue: String {
         set {
