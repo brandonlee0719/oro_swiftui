@@ -36,8 +36,27 @@ struct FolderView: View {
             title: "Trash",
             lastDate: "12.06.2022",
             records: 45),
+        FolderData(
+            security: 1,
+            title: "Work records",
+            lastDate: "12.06.2022",
+            records: 56),
+        FolderData(
+            security: 0,
+            title: "Kids",
+            lastDate: "12.06.2022",
+            records: 2),
+        FolderData(
+            security: 0,
+            title: "Trash",
+            lastDate: "12.06.2022",
+            records: 45),
     ]
+
+    @State private var selection: Int? = 0
     @State private var search: String = ""
+
+    let newFolder = NewFolder()
     
     var body: some View {
         GeometryReader { geometry in
@@ -45,14 +64,16 @@ struct FolderView: View {
                 HStack
                 {
                     Spacer()
-                    Button(action: {
-                            
+                    NavigationLink(destination: newFolder.navigationBarHidden(true), tag: 1, selection: $selection) {
+                        Button(action: {
+                            self.selection = 1
                         }) {
-                            Text("Import")
-                                .font(.system(size: 16))
-                                .foregroundColor(.blue)
+                            Image("add_folder")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 24, height: 24)
                         }
-                        .cornerRadius(8)
+                    }
                     Spacer().frame(width:24)
                 }
                 HStack{
@@ -75,19 +96,6 @@ struct FolderView: View {
                     .font(.system(size: 16))
                     .fontWeight(.semibold)
                     .padding(EdgeInsets(top: 24, leading: 24, bottom: 8, trailing: 24))
-                // List {
-                //     Section(header: Text("Folders (\(folders.count))")) {
-                //         ForEach(folders, id: \.id) { folderData in
-                //             FolderItem(
-                //                 security: folderData.security,
-                //                 title: folderData.title,
-                //                 lastDate: folderData.lastDate,
-                //                 records: folderData.records)
-                //         }
-                //     }
-                // }
-                // .padding(EdgeInsets(top: -10, leading: 0, bottom: -10, trailing: 0))
-
                 ScrollView {
                     VStack {
                         ForEach(folders, id: \.id) { folderData in
@@ -126,13 +134,10 @@ struct FolderItem: View {
             HStack(alignment: .center)
             {
                 ZStack {
-                    RoundedRectangle(cornerRadius:6, style: .continuous)
-                        .foregroundColor(.white)
-                        .frame(width: 64, height: 64)
                     Image("folder")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 60, height: 60)
+                        .frame(width: 50, height: 64)
                         .foregroundColor(.white)
                     Image(systemName: security == 0 ? "play.fill" : "lock.fill")
                         .resizable()
