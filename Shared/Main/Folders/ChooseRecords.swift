@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct ChooseRecords: View {
-    @ObservedObject var audioRecorder: AudioRecorder
+    @ObservedObject var audioRecorder = AudioRecorder()
+    @ObservedObject var viewRouter = MainRouter()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State private var selection: Int? = 0
     @State private var search: String = ""
-
+    
     let folderName: String
 
     var body: some View {
@@ -27,15 +28,16 @@ struct ChooseRecords: View {
                                 .foregroundColor(.blue)
                         }
                     Spacer()
-                    // NavigationLink(destination: newFolder.navigationBarHidden(true), tag: 1, selection: $selection) {
+                    NavigationLink(destination: MainView(viewRouter: viewRouter, audioRecorder: audioRecorder).navigationBarHidden(true), tag: 1, selection: $selection) {
                         Button(action: {
+                                viewRouter.currentPage = .folder
                                 self.selection = 1
                             }) {
                                 Text("Save")
                                     .font(.system(size: 16))
                                     .foregroundColor(.blue)
                             }
-                    // }
+                    }
                 }
                 .padding()
                 ZStack {
