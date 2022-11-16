@@ -15,8 +15,6 @@ struct AddFolder: View {
 
     @State private var folderName: String = "New Folder Name"
 
-    let chooseRecords = ChooseRecords()
-
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .center) {
@@ -29,7 +27,7 @@ struct AddFolder: View {
                                 .foregroundColor(.blue)
                         }
                     Spacer()
-                    NavigationLink(destination: chooseRecords.navigationBarHidden(true), tag: 1, selection: $selection) {
+                    NavigationLink(destination: ChooseRecords(folderName: folderName).navigationBarHidden(true), tag: 1, selection: $selection) {
                         Button(action: {
                                 self.selection = 1
                             }) {

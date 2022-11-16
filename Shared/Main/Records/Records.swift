@@ -155,27 +155,3 @@ struct RecordItem: View {
     }
 }
 
-// struct RecordGroup: View {
-
-//     let date: String
-//     let data: Array<RecordData>
-
-//     var body: some View {
-//         VStack(alignment: .leading)
-//         {
-//             Text(date)
-//                 .font(.system(size: 14))
-//                 .foregroundColor(Color(red: 0.4, green: 0.4, blue: 0.4))
-//             ForEach(data, id: \.id) { item in
-//                 RecordItem(
-//                     playStatus: item.playStatus,
-//                     title: item.title,
-//                     detail: item.detail,
-//                     duration: item.duration,
-//                     month: item.month,
-//                     date: item.date)
-//             }
-//         }
-//         .padding(EdgeInsets(top: 0, leading: 24, bottom: 16, trailing: 24))
-//     }
-// }

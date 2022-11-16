@@ -10,8 +10,8 @@ import Firebase
 
 struct SigninView: View {
     @State private var selection: Int? = 0
-    @State private var email: String = ""
-    @State private var password: String = ""
+    @State private var email: String = "asd@asd.asd"
+    @State private var password: String = "asdasd"
     
     @State var signInProcessing = false
     @State var signInErrorMessage = ""
