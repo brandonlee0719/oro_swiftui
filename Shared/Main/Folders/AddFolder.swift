@@ -1,5 +1,5 @@
 //
-//  NewFolder.swift
+//  AddFolder.swift
 //  ORO (iOS)
 //
 //  Created by MAC on 2022/11/16.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NewFolder: View {
+struct AddFolder: View {
 
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State private var selection: Int? = 0
@@ -69,6 +69,6 @@ struct NewFolder: View {
 
 struct NewFolder_Previews: PreviewProvider {
     static var previews: some View {
-        NewFolder()
+        AddFolder()
     }
 }

@@ -56,7 +56,7 @@ struct FolderView: View {
     @State private var selection: Int? = 0
     @State private var search: String = ""
 
-    let newFolder = NewFolder()
+    let addFolder = AddFolder()
     
     var body: some View {
         GeometryReader { geometry in
@@ -64,7 +64,7 @@ struct FolderView: View {
                 HStack
                 {
                     Spacer()
-                    NavigationLink(destination: newFolder.navigationBarHidden(true), tag: 1, selection: $selection) {
+                    NavigationLink(destination: addFolder.navigationBarHidden(true), tag: 1, selection: $selection) {
                         Button(action: {
                             self.selection = 1
                         }) {
