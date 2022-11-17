@@ -10,10 +10,12 @@ import SwiftUI
 struct ChooseRecords: View {
     @ObservedObject var audioRecorder = AudioRecorder()
     @ObservedObject var viewRouter = MainRouter()
+    @ObservedObject var folderManager = FolderManager()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State private var selection: Int? = 0
     @State private var search: String = ""
-    
+    @State private var selectedRecords = [Recording]()
+
     let folderName: String
 
     var body: some View {
@@ -30,6 +32,7 @@ struct ChooseRecords: View {
                     Spacer()
                     NavigationLink(destination: MainView(viewRouter: viewRouter, audioRecorder: audioRecorder).navigationBarHidden(true), tag: 1, selection: $selection) {
                         Button(action: {
+                                folderManager.pushObject(title: folderName, updatedAt: getMMDDYYYY(date: Date()), security: "", records: makeStringFromSelectedArray())
                                 viewRouter.currentPage = .folder
                                 self.selection = 1
                             }) {
@@ -71,8 +74,10 @@ struct ChooseRecords: View {
                         ForEach(audioRecorder.recordings, id: \.createdAt) { recording in
                             ChooseRecordItem(
                                 audioURL: recording.fileURL,
-                                createAt: recording.createdAt,
-                                duration: recording.duration
+                                createdAt: recording.createdAt,
+                                duration: recording.duration,
+                                addRecord: {self.addRecord(data: recording)},
+                                removeRecord: {self.removeRecord(data: recording)}
                             )
                         }
                     }
@@ -82,6 +87,26 @@ struct ChooseRecords: View {
             }
         }
         .background(Color(red: 0.949, green: 0.957, blue: 0.98))
+    }
+    
+    func addRecord(data: Recording) {
+        self.selectedRecords.append(data)
+    }
+
+    func removeRecord(data: Recording) {
+        if let index = self.selectedRecords.firstIndex(where: { $0.createdAt == data.createdAt }) {
+            self.selectedRecords.remove(at: index)
+        } else {
+            //element is not present in the array
+        }
+    }
+
+    func makeStringFromSelectedArray() -> String {
+        var resultText: String = ""
+        for item: Recording in self.selectedRecords {
+            resultText += "\(item.createdAt),"
+        }
+        return resultText;
     }
 }
 
@@ -94,8 +119,11 @@ struct ChooseRecords_Previews: PreviewProvider {
 struct ChooseRecordItem: View {
 
     let audioURL: URL
-    let createAt: Date
+    let createdAt: Date
     let duration: Float
+    @State var isSelected: Bool = false
+    var addRecord: () -> Void
+    var removeRecord: () -> Void
 
     @ObservedObject var audioPlayer = AudioPlayer()
     
@@ -116,11 +144,11 @@ struct ChooseRecordItem: View {
                     }
                     Spacer()
                     VStack {
-                        Text("\(getMonthNamFromDate(date: createAt))")
+                        Text("\(getMonthNamFromDate(date: createdAt))")
                             .font(.system(size: 14))
                             .fontWeight(.regular)
                             .foregroundColor(Color(red: 0.576, green: 0.62, blue: 0.678))
-                        Text("\(getDayFromDate(date: createAt))")
+                        Text("\(getDayFromDate(date: createdAt))")
                             .font(.system(size: 18))
                             .fontWeight(.regular)
                             .foregroundColor(Color(red: 0.576, green: 0.62, blue: 0.678))
@@ -131,9 +159,14 @@ struct ChooseRecordItem: View {
                 .background(.white)
                 .cornerRadius(8)
             Button(action: {
-                
+                if(isSelected) {
+                    self.removeRecord()
+                } else {
+                    self.addRecord()
+                }
+                self.isSelected.toggle()
             }) {
-                Image(systemName: "circle")
+                Image(systemName: isSelected ? "circle.fill" : "circle")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 26, height: 26)

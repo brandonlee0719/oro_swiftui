@@ -29,7 +29,7 @@ struct AddFolder: View {
                     Spacer()
                     NavigationLink(destination: ChooseRecords(folderName: folderName).navigationBarHidden(true), tag: 1, selection: $selection) {
                         Button(action: {
-                                self.selection = 1
+                                 self.selection = 1
                             }) {
                                 Text("Next")
                                     .font(.system(size: 16))

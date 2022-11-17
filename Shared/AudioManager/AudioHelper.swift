@@ -37,3 +37,10 @@ func getDayFromDate(date:Date) -> String {
     let dateString = dateFormatter.string(from: date)
     return "\(dateString)"
 }
+
+func getMMDDYYYY(date:Date) -> String {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "MM.dd.yyyy"
+    let dateString = dateFormatter.string(from: date)
+    return "\(dateString)"
+}
