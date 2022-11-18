@@ -54,7 +54,7 @@ struct RecordPlayer: View {
                         .font(.system(size: 16))
                         .foregroundColor(Color(red: 0.576, green: 0.62, blue: 0.678))
                 }.padding()
-                AudioPlayerView()
+                AudioPlayerView().padding()
                 HStack {
                     Button(action: {
                            
@@ -81,7 +81,7 @@ struct RecordPlayer: View {
                                 .font(.system(size: 16))
                                 .fontWeight(.semibold)
                                 .multilineTextAlignment(.trailing)
-                                .foregroundColor(Color(red: 0.576, green: 0.62, blue: 0.678))
+                                .foregroundColor(Color(red: 0.337, green: 0.718, blue: 0.902))
                             Image("audio_active")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)

@@ -21,22 +21,23 @@ struct AudioPlayerView: View {
             VStack {
                 GeometryReader { gr in
                     Capsule()
-                        .stroke(Color.blue, lineWidth: 2)
+                        .stroke(Color(red: 0.847, green: 0.847, blue: 0.847), lineWidth: 2)
                         .background(
                             Capsule()
-                                .foregroundColor(Color.blue)
+                                .foregroundColor(Color(red: 0.337, green: 0.718, blue: 0.902))
                                 .frame(width: gr.size.width * progress, height: 8), alignment: .leading)
                 }
                 .frame( height: 8)
                 HStack {
                     Text(formattedProgress)
-                        .font(.caption.monospacedDigit())
+                        .font(.system(size: 16))
+                        .fontWeight(.semibold)
+                        .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
                     Spacer()
                     Text(formattedDuration)
-                        .font(.caption.monospacedDigit())
+                        .font(.system(size: 16))
+                        .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
                 }
-                
-
             }
             .padding()
             .frame(height: 50, alignment: .center)
@@ -57,9 +58,11 @@ struct AudioPlayerView: View {
                     }
                 }) {
                     Image(systemName: "gobackward.15")
-                        .font(.title)
-                        .imageScale(.medium)
-                }
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width:32, height:32)
+                        .foregroundColor(Color(red: 0.337, green: 0.718, blue: 0.902))
+                }.padding()
 
                 Button(action: {
                     if audioPlayer.isPlaying {
@@ -72,9 +75,11 @@ struct AudioPlayerView: View {
                 }) {
                     Image(systemName: playing ?
                           "pause.circle.fill" : "play.circle.fill")
-                        .font(.title)
-                        .imageScale(.large)
-                }
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width:68, height:68)
+                        .foregroundColor(Color(red: 0.337, green: 0.718, blue: 0.902))
+                }.padding()
 
                 Button(action: {
                     let increase = self.audioPlayer.currentTime + 15
@@ -86,9 +91,11 @@ struct AudioPlayerView: View {
                     }
                 }) {
                     Image(systemName: "goforward.15")
-                        .font(.title)
-                        .imageScale(.medium)
-                }
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width:32, height:32)
+                        .foregroundColor(Color(red: 0.337, green: 0.718, blue: 0.902))
+                }.padding()
                 Spacer()
             }
         }

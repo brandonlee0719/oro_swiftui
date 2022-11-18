@@ -49,7 +49,8 @@
 		A77AED36292737EF008525C6 /* RecordEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77AED35292737EF008525C6 /* RecordEdit.swift */; };
 		A77AED382927A325008525C6 /* audio_player.gif in Resources */ = {isa = PBXBuildFile; fileRef = A77AED372927A325008525C6 /* audio_player.gif */; };
 		A77AED3A2927AE91008525C6 /* AudioPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77AED392927AE91008525C6 /* AudioPlayerView.swift */; };
-		A77AED3C2927B1A2008525C6 /* audioTest.m4a in Resources */ = {isa = PBXBuildFile; fileRef = A77AED3B2927B1A2008525C6 /* audioTest.m4a */; };
+		A77AED3C2927B1A2008525C6 /* _audioTest.m4a in Resources */ = {isa = PBXBuildFile; fileRef = A77AED3B2927B1A2008525C6 /* _audioTest.m4a */; };
+		A77AED3E2927C816008525C6 /* audioTest.m4a in Resources */ = {isa = PBXBuildFile; fileRef = A77AED3D2927C816008525C6 /* audioTest.m4a */; };
 		A7C077E8291E6F040011C3A6 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = A7C077E7291E6F040011C3A6 /* FirebaseAnalytics */; };
 		A7C077EA291E6F040011C3A6 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A7C077E9291E6F040011C3A6 /* FirebaseAuth */; };
 		A7C077EC291E6F040011C3A6 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = A7C077EB291E6F040011C3A6 /* FirebaseDatabase */; };
@@ -113,7 +114,8 @@
 		A77AED35292737EF008525C6 /* RecordEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordEdit.swift; sourceTree = "<group>"; };
 		A77AED372927A325008525C6 /* audio_player.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = audio_player.gif; sourceTree = "<group>"; };
 		A77AED392927AE91008525C6 /* AudioPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerView.swift; sourceTree = "<group>"; };
-		A77AED3B2927B1A2008525C6 /* audioTest.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = audioTest.m4a; sourceTree = "<group>"; };
+		A77AED3B2927B1A2008525C6 /* _audioTest.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = _audioTest.m4a; sourceTree = "<group>"; };
+		A77AED3D2927C816008525C6 /* audioTest.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = audioTest.m4a; sourceTree = "<group>"; };
 		A7C077F3291E6FF60011C3A6 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		A7C077FF291ECA8D0011C3A6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -243,7 +245,8 @@
 		04FEB3D929070B65008844DE /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				A77AED3B2927B1A2008525C6 /* audioTest.m4a */,
+				A77AED3B2927B1A2008525C6 /* _audioTest.m4a */,
+				A77AED3D2927C816008525C6 /* audioTest.m4a */,
 				A77AED372927A325008525C6 /* audio_player.gif */,
 				A74643182925B301006A080B /* FolderManager */,
 				A721A9E829212EDA005E043B /* StorageManager */,
@@ -478,7 +481,8 @@
 				04FEB40629070B6B008844DE /* Assets.xcassets in Resources */,
 				A7C07800291ECA8D0011C3A6 /* GoogleService-Info.plist in Resources */,
 				A77AED382927A325008525C6 /* audio_player.gif in Resources */,
-				A77AED3C2927B1A2008525C6 /* audioTest.m4a in Resources */,
+				A77AED3C2927B1A2008525C6 /* _audioTest.m4a in Resources */,
+				A77AED3E2927C816008525C6 /* audioTest.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
