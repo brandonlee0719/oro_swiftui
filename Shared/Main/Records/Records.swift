@@ -89,69 +89,77 @@ struct RecordItem: View {
 
     @ObservedObject var audioPlayer = AudioPlayer()
     
+    @State private var selection: Int? = 0
+    
     var body: some View {
-        HStack(alignment: .center)
-        {
+        NavigationLink(destination: RecordPlayer(), tag: 1, selection: $selection) {
             Button(action: {
-                    if (audioPlayer.isPlaying == false) {
-                        self.audioPlayer.startPlayback(audio: self.audioURL)
-                    } else {
-                        self.audioPlayer.stopPlayback()
-                    }
-                }) {
-                ZStack {
-                    RoundedRectangle(cornerRadius:6, style: .continuous)
-                        .foregroundColor(Color(red: 238/255, green: 248/255, blue: 252/255, opacity: 1.0))
-                        .frame(width: 64, height: 64)
-                    Circle()
-                        .foregroundColor(Color(red: 86/255, green: 183/255, blue: 230/255, opacity: 1.0))
-                        .frame(width: 40, height: 40)
-                    Image(systemName: audioPlayer.isPlaying == false ? "play.fill": "stop.fill")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 16, height: 16)
-                        .foregroundColor(.white)
-                        .padding([.leading], audioPlayer.isPlaying == false ? 5: 0)
-                }
-            }.padding(EdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 8))
-
-            VStack {
-                HStack {
-                    Text("Audio Record")
-                        .font(.system(size: 14))
-                        .fontWeight(.regular)
-                        .foregroundColor(Color(red: 0.576, green: 0.62, blue: 0.678))
-                    Spacer()
-                    Image(systemName: "ellipsis").foregroundColor(Color(red: 0.576, green: 0.62, blue: 0.678))
-                }
-                HStack {
-                    VStack(alignment: .leading, spacing: 0) {
-                        Text("\(audioURL.lastPathComponent)")
-                            .font(.system(size: 16))
-                            .fontWeight(.semibold)
-                            .foregroundColor(Color(red: 0.4, green: 0.4, blue: 0.4))
-                        Text("\(getTimeFromFloat(time: duration))")
-                            .font(.system(size: 14))
-                            .fontWeight(.regular)
-                            .foregroundColor(Color(red: 0.337, green: 0.718, blue: 0.902))
-                    }
-                    Spacer()
+                self.selection = 1
+            }) {
+                HStack(alignment: .center)
+                {
+                
+                        ZStack {
+                            RoundedRectangle(cornerRadius:6, style: .continuous)
+                                .foregroundColor(Color(red: 238/255, green: 248/255, blue: 252/255, opacity: 1.0))
+                                .frame(width: 64, height: 64)
+                            Circle()
+                                .foregroundColor(Color(red: 86/255, green: 183/255, blue: 230/255, opacity: 1.0))
+                                .frame(width: 40, height: 40)
+                            Image(systemName: audioPlayer.isPlaying == false ? "play.fill": "stop.fill")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 16, height: 16)
+                                .foregroundColor(.white)
+                                .padding([.leading], audioPlayer.isPlaying == false ? 5: 0)
+                        }.padding(EdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 8))
                     VStack {
-                        Text("\(getMonthNamFromDate(date: createAt))")
-                            .font(.system(size: 14))
-                            .fontWeight(.regular)
-                            .foregroundColor(Color(red: 0.576, green: 0.62, blue: 0.678))
-                        Text("\(getDayFromDate(date: createAt))")
-                            .font(.system(size: 18))
-                            .fontWeight(.regular)
-                            .foregroundColor(Color(red: 0.576, green: 0.62, blue: 0.678))
+                        HStack {
+                            Text("Audio Record")
+                                .font(.system(size: 14))
+                                .fontWeight(.regular)
+                                .foregroundColor(Color(red: 0.576, green: 0.62, blue: 0.678))
+                            Spacer()
+                            NavigationLink(destination: RecordEdit(), tag: 2, selection: $selection) {
+                                Button(action: {
+                                    self.selection = 2
+                                }) {
+                                    Image(systemName: "ellipsis")
+                                        .foregroundColor(Color(red: 0.576, green: 0.62, blue: 0.678))
+                                        .padding()
+                                }
+                            }
+                        }
+                        HStack {
+                            VStack(alignment: .leading, spacing: 0) {
+                                Text("\(audioURL.lastPathComponent)")
+                                    .font(.system(size: 16))
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(Color(red: 0.4, green: 0.4, blue: 0.4))
+                                Text("\(getTimeFromFloat(time: duration))")
+                                    .font(.system(size: 14))
+                                    .fontWeight(.regular)
+                                    .foregroundColor(Color(red: 0.337, green: 0.718, blue: 0.902))
+                            }
+                            Spacer()
+                            VStack {
+                                Text("\(getMonthNamFromDate(date: createAt))")
+                                    .font(.system(size: 14))
+                                    .fontWeight(.regular)
+                                    .foregroundColor(Color(red: 0.576, green: 0.62, blue: 0.678))
+                                Text("\(getDayFromDate(date: createAt))")
+                                    .font(.system(size: 18))
+                                    .fontWeight(.regular)
+                                    .foregroundColor(Color(red: 0.576, green: 0.62, blue: 0.678))
+                            }
+                        }
+                        .padding(.trailing, 16)
                     }
                 }
+                .background(.white)
+                .cornerRadius(8)
             }
-            .padding(.trailing, 16)
         }
-        .background(.white)
-        .cornerRadius(8)
     }
 }
 

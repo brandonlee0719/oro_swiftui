@@ -43,6 +43,10 @@
 		A746431C2925B3AD006A080B /* FolderModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A746431B2925B3AD006A080B /* FolderModal.swift */; };
 		A746431F2925E2BC006A080B /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A746431E2925E2BC006A080B /* FirebaseDatabaseSwift */; };
 		A74643212925E77A006A080B /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A74643202925E77A006A080B /* FirebaseAnalyticsSwift */; };
+		A77AED2F29270620008525C6 /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = A77AED2E29270620008525C6 /* Starscream */; };
+		A77AED3229272B7A008525C6 /* SwiftUIGIF in Frameworks */ = {isa = PBXBuildFile; productRef = A77AED3129272B7A008525C6 /* SwiftUIGIF */; };
+		A77AED3429272E3C008525C6 /* RecordPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77AED3329272E3C008525C6 /* RecordPlayer.swift */; };
+		A77AED36292737EF008525C6 /* RecordEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77AED35292737EF008525C6 /* RecordEdit.swift */; };
 		A7C077E8291E6F040011C3A6 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = A7C077E7291E6F040011C3A6 /* FirebaseAnalytics */; };
 		A7C077EA291E6F040011C3A6 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A7C077E9291E6F040011C3A6 /* FirebaseAuth */; };
 		A7C077EC291E6F040011C3A6 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = A7C077EB291E6F040011C3A6 /* FirebaseDatabase */; };
@@ -102,6 +106,8 @@
 		A746431629253426006A080B /* ChooseRecords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseRecords.swift; sourceTree = "<group>"; };
 		A74643192925B329006A080B /* FolderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderManager.swift; sourceTree = "<group>"; };
 		A746431B2925B3AD006A080B /* FolderModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderModal.swift; sourceTree = "<group>"; };
+		A77AED3329272E3C008525C6 /* RecordPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordPlayer.swift; sourceTree = "<group>"; };
+		A77AED35292737EF008525C6 /* RecordEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordEdit.swift; sourceTree = "<group>"; };
 		A7C077F3291E6FF60011C3A6 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		A7C077FF291ECA8D0011C3A6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -114,6 +120,8 @@
 				A74643212925E77A006A080B /* FirebaseAnalyticsSwift in Frameworks */,
 				A746431F2925E2BC006A080B /* FirebaseDatabaseSwift in Frameworks */,
 				A7C077EC291E6F040011C3A6 /* FirebaseDatabase in Frameworks */,
+				A77AED2F29270620008525C6 /* Starscream in Frameworks */,
+				A77AED3229272B7A008525C6 /* SwiftUIGIF in Frameworks */,
 				A7C077EE291E6F040011C3A6 /* FirebaseFirestore in Frameworks */,
 				A7C077F0291E6F040011C3A6 /* FirebaseMessaging in Frameworks */,
 				A7C077E8291E6F040011C3A6 /* FirebaseAnalytics in Frameworks */,
@@ -181,6 +189,8 @@
 			isa = PBXGroup;
 			children = (
 				0473AC82290BBBE500ABB348 /* Records.swift */,
+				A77AED3329272E3C008525C6 /* RecordPlayer.swift */,
+				A77AED35292737EF008525C6 /* RecordEdit.swift */,
 			);
 			path = Records;
 			sourceTree = "<group>";
@@ -338,6 +348,8 @@
 				A72F7F132922B15C00C093F4 /* Waveform */,
 				A746431E2925E2BC006A080B /* FirebaseDatabaseSwift */,
 				A74643202925E77A006A080B /* FirebaseAnalyticsSwift */,
+				A77AED2E29270620008525C6 /* Starscream */,
+				A77AED3129272B7A008525C6 /* SwiftUIGIF */,
 			);
 			productName = "ORO (iOS)";
 			productReference = 04FEB3E129070B6B008844DE /* ORO.app */;
@@ -434,6 +446,8 @@
 			packageReferences = (
 				A7C077E6291E6F040011C3A6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				A72F7F122922B15C00C093F4 /* XCRemoteSwiftPackageReference "Waveform" */,
+				A77AED2D29270620008525C6 /* XCRemoteSwiftPackageReference "Starscream" */,
+				A77AED3029272B7A008525C6 /* XCRemoteSwiftPackageReference "swiftui-gif" */,
 			);
 			productRefGroup = 04FEB3E229070B6B008844DE /* Products */;
 			projectDirPath = "";
@@ -490,12 +504,14 @@
 				0473AC83290BBBE500ABB348 /* Records.swift in Sources */,
 				A721A9E0291FCEA2005E043B /* AudioExtensions.swift in Sources */,
 				04FEB40429070B6B008844DE /* SplashView.swift in Sources */,
+				A77AED3429272E3C008525C6 /* RecordPlayer.swift in Sources */,
 				A721A9DA291FCD89005E043B /* AudioPlayer.swift in Sources */,
 				0473AC88290BC0E100ABB348 /* MainView.swift in Sources */,
 				A746431C2925B3AD006A080B /* FolderModal.swift in Sources */,
 				A74643152925265F006A080B /* AddFolder.swift in Sources */,
 				0473AC86290BBDDB00ABB348 /* Folders.swift in Sources */,
 				A7C077F4291E6FF60011C3A6 /* SignupView.swift in Sources */,
+				A77AED36292737EF008525C6 /* RecordEdit.swift in Sources */,
 				A721A9DD291FCDD7005E043B /* AudioRecorder.swift in Sources */,
 				A721A9E3291FCEDE005E043B /* AudioHelper.swift in Sources */,
 				A746431A2925B329006A080B /* FolderManager.swift in Sources */,
@@ -924,6 +940,22 @@
 				kind = branch;
 			};
 		};
+		A77AED2D29270620008525C6 /* XCRemoteSwiftPackageReference "Starscream" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/daltoniam/Starscream";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+		A77AED3029272B7A008525C6 /* XCRemoteSwiftPackageReference "swiftui-gif" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/globulus/swiftui-gif";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		A7C077E6291E6F040011C3A6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -949,6 +981,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A7C077E6291E6F040011C3A6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalyticsSwift;
+		};
+		A77AED2E29270620008525C6 /* Starscream */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A77AED2D29270620008525C6 /* XCRemoteSwiftPackageReference "Starscream" */;
+			productName = Starscream;
+		};
+		A77AED3129272B7A008525C6 /* SwiftUIGIF */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A77AED3029272B7A008525C6 /* XCRemoteSwiftPackageReference "swiftui-gif" */;
+			productName = SwiftUIGIF;
 		};
 		A7C077E7291E6F040011C3A6 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
