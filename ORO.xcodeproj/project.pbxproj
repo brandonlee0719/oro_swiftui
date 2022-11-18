@@ -47,6 +47,9 @@
 		A77AED3229272B7A008525C6 /* SwiftUIGIF in Frameworks */ = {isa = PBXBuildFile; productRef = A77AED3129272B7A008525C6 /* SwiftUIGIF */; };
 		A77AED3429272E3C008525C6 /* RecordPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77AED3329272E3C008525C6 /* RecordPlayer.swift */; };
 		A77AED36292737EF008525C6 /* RecordEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77AED35292737EF008525C6 /* RecordEdit.swift */; };
+		A77AED382927A325008525C6 /* audio_player.gif in Resources */ = {isa = PBXBuildFile; fileRef = A77AED372927A325008525C6 /* audio_player.gif */; };
+		A77AED3A2927AE91008525C6 /* AudioPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77AED392927AE91008525C6 /* AudioPlayerView.swift */; };
+		A77AED3C2927B1A2008525C6 /* audioTest.m4a in Resources */ = {isa = PBXBuildFile; fileRef = A77AED3B2927B1A2008525C6 /* audioTest.m4a */; };
 		A7C077E8291E6F040011C3A6 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = A7C077E7291E6F040011C3A6 /* FirebaseAnalytics */; };
 		A7C077EA291E6F040011C3A6 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A7C077E9291E6F040011C3A6 /* FirebaseAuth */; };
 		A7C077EC291E6F040011C3A6 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = A7C077EB291E6F040011C3A6 /* FirebaseDatabase */; };
@@ -108,6 +111,9 @@
 		A746431B2925B3AD006A080B /* FolderModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderModal.swift; sourceTree = "<group>"; };
 		A77AED3329272E3C008525C6 /* RecordPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordPlayer.swift; sourceTree = "<group>"; };
 		A77AED35292737EF008525C6 /* RecordEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordEdit.swift; sourceTree = "<group>"; };
+		A77AED372927A325008525C6 /* audio_player.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = audio_player.gif; sourceTree = "<group>"; };
+		A77AED392927AE91008525C6 /* AudioPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerView.swift; sourceTree = "<group>"; };
+		A77AED3B2927B1A2008525C6 /* audioTest.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = audioTest.m4a; sourceTree = "<group>"; };
 		A7C077F3291E6FF60011C3A6 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		A7C077FF291ECA8D0011C3A6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -191,6 +197,7 @@
 				0473AC82290BBBE500ABB348 /* Records.swift */,
 				A77AED3329272E3C008525C6 /* RecordPlayer.swift */,
 				A77AED35292737EF008525C6 /* RecordEdit.swift */,
+				A77AED392927AE91008525C6 /* AudioPlayerView.swift */,
 			);
 			path = Records;
 			sourceTree = "<group>";
@@ -236,6 +243,8 @@
 		04FEB3D929070B65008844DE /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				A77AED3B2927B1A2008525C6 /* audioTest.m4a */,
+				A77AED372927A325008525C6 /* audio_player.gif */,
 				A74643182925B301006A080B /* FolderManager */,
 				A721A9E829212EDA005E043B /* StorageManager */,
 				A721A9D6291FCD17005E043B /* AudioManager */,
@@ -468,6 +477,8 @@
 			files = (
 				04FEB40629070B6B008844DE /* Assets.xcassets in Resources */,
 				A7C07800291ECA8D0011C3A6 /* GoogleService-Info.plist in Resources */,
+				A77AED382927A325008525C6 /* audio_player.gif in Resources */,
+				A77AED3C2927B1A2008525C6 /* audioTest.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,6 +527,7 @@
 				A721A9E3291FCEDE005E043B /* AudioHelper.swift in Sources */,
 				A746431A2925B329006A080B /* FolderManager.swift in Sources */,
 				04FEB40229070B6B008844DE /* OROApp.swift in Sources */,
+				A77AED3A2927AE91008525C6 /* AudioPlayerView.swift in Sources */,
 				0473AC7F290BBBAF00ABB348 /* Settings.swift in Sources */,
 				0473AC81290BBBCD00ABB348 /* Audiograms.swift in Sources */,
 				046904012909267900A232D7 /* SigninView.swift in Sources */,

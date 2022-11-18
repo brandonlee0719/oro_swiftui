@@ -92,7 +92,7 @@ struct RecordItem: View {
     @State private var selection: Int? = 0
     
     var body: some View {
-        NavigationLink(destination: RecordPlayer(), tag: 1, selection: $selection) {
+        NavigationLink(destination: RecordPlayer().navigationBarHidden(true), tag: 1, selection: $selection) {
             Button(action: {
                 self.selection = 1
             }) {
@@ -120,7 +120,7 @@ struct RecordItem: View {
                                 .fontWeight(.regular)
                                 .foregroundColor(Color(red: 0.576, green: 0.62, blue: 0.678))
                             Spacer()
-                            NavigationLink(destination: RecordEdit(), tag: 2, selection: $selection) {
+                            NavigationLink(destination: RecordEdit().navigationBarHidden(true), tag: 2, selection: $selection) {
                                 Button(action: {
                                     self.selection = 2
                                 }) {
