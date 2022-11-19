@@ -13,7 +13,8 @@ struct RecordPlayer: View {
     @State private var selection: Int? = 0
     @State private var isShowingTranscribeProgress: Bool = false
     @State private var transcribeProgress: Bool = false
-
+    var audioURL: URL
+    
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .center) {
@@ -61,10 +62,10 @@ struct RecordPlayer: View {
                         Spacer()
                     }
                 } else {
-                    TranscriptionView()
+                    TranscriptionView(audioURL: audioURL)
                         .padding()
                 }
-                AudioPlayerView().padding()
+                AudioPlayerView(audioURL: audioURL).padding()
                 HStack {
                     Button(action: {
                         isShowingTranscribeProgress.toggle()
@@ -83,7 +84,7 @@ struct RecordPlayer: View {
                         }
                     }
                     .fullScreenCover(isPresented: $isShowingTranscribeProgress) {
-                        TranscriptionProcess( isProgress: $transcribeProgress)
+                        TranscriptionProcess(isProgress: $transcribeProgress)
                     }
                     Spacer()
                     Button(action: {
@@ -111,6 +112,6 @@ struct RecordPlayer: View {
 
 struct RecordPlayer_Previews: PreviewProvider {
     static var previews: some View {
-        RecordPlayer()
+        RecordPlayer(audioURL: URL(string: "")!)
     }
 }

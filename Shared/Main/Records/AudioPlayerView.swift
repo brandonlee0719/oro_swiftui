@@ -15,6 +15,7 @@ struct AudioPlayerView: View {
     @State var duration: Double = 0.0
     @State var formattedDuration: String = ""
     @State var formattedProgress: String = "00:00"
+    var audioURL: URL
 
     var body: some View {
         VStack {
@@ -112,8 +113,9 @@ struct AudioPlayerView: View {
         formatter.zeroFormattingBehavior = [ .pad ]
 
         // init audioPlayer
-        let path = Bundle.main.path(forResource: "audioTest", ofType: "m4a")!
-        self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+//        let path = Bundle.main.path(forResource: "audioTest", ofType: "m4a")!
+        
+        self.audioPlayer = try! AVAudioPlayer(contentsOf: audioURL)
         self.audioPlayer.prepareToPlay()
 
         //I need both! The formattedDuration is the string to display and duration is used when forwarding
@@ -132,10 +134,10 @@ struct AudioPlayerView: View {
 
 struct AudioPlayerView_Previews: PreviewProvider {
     static var previews: some View {
-        AudioPlayerView()
+        AudioPlayerView(audioURL: URL(string:"")!)
             .previewLayout(PreviewLayout.fixed(width: 500, height: 300))
             .previewDisplayName("Default preview")
-        AudioPlayerView()
+        AudioPlayerView(audioURL: URL(string:"")!)
             .previewLayout(PreviewLayout.fixed(width: 500, height: 300))
             .environment(\.sizeCategory, .accessibilityExtraLarge)
     }

@@ -92,7 +92,7 @@ struct RecordItem: View {
     @State private var selection: Int? = 0
     
     var body: some View {
-        NavigationLink(destination: RecordPlayer().navigationBarHidden(true), tag: 1, selection: $selection) {
+        NavigationLink(destination: RecordPlayer(audioURL: audioURL).navigationBarHidden(true), tag: 1, selection: $selection) {
             Button(action: {
                 self.selection = 1
             }) {

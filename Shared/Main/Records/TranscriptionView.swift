@@ -11,9 +11,11 @@ import AVFoundation
 import Starscream
 
 struct TranscriptionView: UIViewControllerRepresentable {
-
+    var audioURL: URL
     func makeUIViewController(context: Context) -> TranscriptionViewController {
-        return TranscriptionViewController()
+        let transcriptionVC = TranscriptionViewController()
+        transcriptionVC.audioURL = audioURL
+        return transcriptionVC
     }
     
     func updateUIViewController(_ uiViewController: TranscriptionViewController, context: Context) {
@@ -22,6 +24,8 @@ struct TranscriptionView: UIViewControllerRepresentable {
 }
 
 class TranscriptionViewController: UIViewController  {
+    
+    var audioURL: URL!
     
     private let apiKey = "Token 712646679cb1fff69a40073e00b3d9fe7a0976b8"
     private let audioEngine = AVAudioEngine()
@@ -42,7 +46,7 @@ class TranscriptionViewController: UIViewController  {
     private let transcriptView: UITextView = {
         let textView = UITextView()
         textView.isScrollEnabled = true
-        textView.backgroundColor = .lightGray
+        textView.backgroundColor = .white
         textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
     }()
@@ -66,6 +70,7 @@ class TranscriptionViewController: UIViewController  {
     }
     
     private func startAnalyzingAudio() {
+        print("audioURL:", self.audioURL as Any)
         let inputNode = audioEngine.inputNode
         let inputFormat = inputNode.inputFormat(forBus: 0)
         let outputFormat = AVAudioFormat(commonFormat: .pcmFormatInt16, sampleRate: inputFormat.sampleRate, channels: inputFormat.channelCount, interleaved: true)
@@ -91,6 +96,21 @@ class TranscriptionViewController: UIViewController  {
         } catch {
             print(error)
         }
+
+        //  let file = try! AVAudioFile(forReading: audioURL!)
+        //  let format = AVAudioFormat(commonFormat: .pcmFormatFloat32, sampleRate: file.fileFormat.sampleRate, channels: 1, interleaved: false)
+
+        //  let buf = AVAudioPCMBuffer(pcmFormat: format!, frameCapacity: 1024)
+        //  try! file.read(into: buf!)
+
+        //  // this makes a copy, you might not want that
+        //  let floatArray = UnsafeBufferPointer(start: buf?.floatChannelData![0], count:Int(buf!.frameLength))
+        //  var data = Data()
+        //  for buf in floatArray {
+        //      data.append(withUnsafeBytes(of: buf) { Data($0) })
+        //  }
+        //  self.socket.write(data: data)
+        
     }
     
     private func toNSData(buffer: AVAudioPCMBuffer) -> Data? {
@@ -102,22 +122,55 @@ class TranscriptionViewController: UIViewController  {
 extension TranscriptionViewController: WebSocketDelegate {
     func didReceive(event: WebSocketEvent, client: WebSocket) {
         switch event {
-        case .text(let text):
-            let jsonData = Data(text.utf8)
-            let response = try! jsonDecoder.decode(DeepgramResponse.self, from: jsonData)
-            let transcript = response.channel.alternatives.first!.transcript
-        
-            if response.isFinal && !transcript.isEmpty {
-                if transcriptView.text.isEmpty {
-                    transcriptView.text = transcript
-                } else {
-                    transcriptView.text = transcriptView.text + " " + transcript
+//            case .text(let text):
+//                let jsonData = Data(text.utf8)
+//                let response = try! jsonDecoder.decode(DeepgramResponse.self, from: jsonData)
+//                let transcript = response.channel.alternatives.first!.transcript
+//
+//                if response.isFinal && !transcript.isEmpty {
+//                    if transcriptView.text.isEmpty {
+//                        transcriptView.text = transcript
+//                    } else {
+//                        transcriptView.text = transcriptView.text + " " + transcript
+//                    }
+//                }
+//            case .error(let error):
+//                print(error ?? "")
+            case .connected(let headers):
+//                isConnected = true
+                print("websocket is connected: \(headers)")
+            case .disconnected(let reason, let code):
+//                isConnected = false
+                print("websocket is disconnected: \(reason) with code: \(code)")
+            case .text(let text):
+                let jsonData = Data(text.utf8)
+                let response = try! jsonDecoder.decode(DeepgramResponse.self, from: jsonData)
+                let transcript = response.channel.alternatives.first!.transcript
+
+                if response.isFinal && !transcript.isEmpty {
+                    if transcriptView.text.isEmpty {
+                        transcriptView.text = transcript
+                    } else {
+                        transcriptView.text = transcriptView.text + " " + transcript
+                    }
                 }
-            }
-        case .error(let error):
-            print(error ?? "")
-        default:
-            break
+            case .binary(let data):
+                print("Received data: \(data.count)")
+            case .ping(_):
+                break
+            case .pong(_):
+                break
+            case .viabilityChanged(_):
+                break
+            case .reconnectSuggested(_):
+                break
+            case .cancelled:
+//                isConnected = false
+                break
+            case .error(let error):
+//                isConnected = false
+//                handleError(error)
+                print(error ?? "")
         }
     }
 }
