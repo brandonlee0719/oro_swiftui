@@ -6,12 +6,12 @@
 //
 
 import SwiftUI
-import SwiftUIGIF
 
 struct RecordPlayer: View {
 
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State private var selection: Int? = 0
+    @State private var transcribeProgress: Bool = false
     
     var body: some View {
         GeometryReader { geometry in
@@ -39,12 +39,13 @@ struct RecordPlayer: View {
                     }
                 }
                 .padding()
-                Image("folder")
+                Image("audio_player")
                     .resizable()
-                    .aspectRatio(contentMode: .fit)
+                    .aspectRatio(contentMode: .fill)
                     .frame(width: 310, height: 310)
                     .foregroundColor(.white)
-                    .padding()
+                    .cornerRadius(20)
+//                GifImage("audio_player")
                 VStack {
                     Text("My First Record")
                         .font(.system(size: 24))
@@ -57,7 +58,7 @@ struct RecordPlayer: View {
                 AudioPlayerView().padding()
                 HStack {
                     Button(action: {
-                           
+                        transcribeProgress.toggle()
                     }) {
                         HStack {
                             Image("audio_text_inactive")
@@ -71,6 +72,9 @@ struct RecordPlayer: View {
                                 .multilineTextAlignment(.leading)
                                 .foregroundColor(Color(red: 0.576, green: 0.62, blue: 0.678))
                         }
+                    }
+                    .fullScreenCover(isPresented: $transcribeProgress) {
+                        TranscriptionProcess()
                     }
                     Spacer()
                     Button(action: {
