@@ -11,8 +11,9 @@ struct RecordPlayer: View {
 
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State private var selection: Int? = 0
+    @State private var isShowingTranscribeProgress: Bool = false
     @State private var transcribeProgress: Bool = false
-    
+
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .center) {
@@ -39,26 +40,33 @@ struct RecordPlayer: View {
                     }
                 }
                 .padding()
-                Image("audio_player")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 310, height: 310)
-                    .foregroundColor(.white)
-                    .cornerRadius(20)
-//                GifImage("audio_player")
-                VStack {
-                    Text("My First Record")
-                        .font(.system(size: 24))
-                        .fontWeight(.semibold)
-                        .foregroundColor(Color(red: 0.4, green: 0.4, blue: 0.4))
-                    Text("Folder: Work Records")
-                        .font(.system(size: 16))
-                        .foregroundColor(Color(red: 0.576, green: 0.62, blue: 0.678))
-                }.padding()
+                if(!transcribeProgress) {
+                    VStack {
+                        Image("audio_player")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 310, height: 310)
+                            .foregroundColor(.white)
+                            .cornerRadius(20)
+        //                GifImage("audio_player")
+                        VStack {
+                            Text("My First Record")
+                                .font(.system(size: 24))
+                                .fontWeight(.semibold)
+                                .foregroundColor(Color(red: 0.4, green: 0.4, blue: 0.4))
+                            Text("Folder: Work Records")
+                                .font(.system(size: 16))
+                                .foregroundColor(Color(red: 0.576, green: 0.62, blue: 0.678))
+                        }.padding()
+                        Spacer()
+                    }
+                } else {
+                    Spacer()
+                }
                 AudioPlayerView().padding()
                 HStack {
                     Button(action: {
-                        transcribeProgress.toggle()
+                        isShowingTranscribeProgress.toggle()
                     }) {
                         HStack {
                             Image("audio_text_inactive")
@@ -73,8 +81,8 @@ struct RecordPlayer: View {
                                 .foregroundColor(Color(red: 0.576, green: 0.62, blue: 0.678))
                         }
                     }
-                    .fullScreenCover(isPresented: $transcribeProgress) {
-                        TranscriptionProcess()
+                    .fullScreenCover(isPresented: $isShowingTranscribeProgress) {
+                        TranscriptionProcess( isProgress: $transcribeProgress)
                     }
                     Spacer()
                     Button(action: {

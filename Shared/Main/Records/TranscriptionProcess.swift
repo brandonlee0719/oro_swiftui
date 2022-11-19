@@ -8,10 +8,8 @@
 import SwiftUI
 
 struct TranscriptionProcess: View {
-
-//    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-//    @State private var selection: Int? = 0
     @Environment(\.dismiss) var dismiss
+    @Binding var isProgress: Bool
     
     var body: some View {
         VStack{
@@ -30,6 +28,7 @@ struct TranscriptionProcess: View {
             Spacer()
             
             Button(action: {
+                isProgress.toggle()
                 dismiss()
             }) {
                 Text("Yes, Transcribe")
@@ -61,6 +60,6 @@ struct TranscriptionProcess: View {
 
 struct TranscriptionProcess_Previews: PreviewProvider {
     static var previews: some View {
-        TranscriptionProcess()
+        TranscriptionProcess(isProgress: .constant(true))
     }
 }
