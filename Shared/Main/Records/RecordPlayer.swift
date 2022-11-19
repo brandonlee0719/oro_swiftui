@@ -61,7 +61,8 @@ struct RecordPlayer: View {
                         Spacer()
                     }
                 } else {
-                    Spacer()
+                    TranscriptionView()
+                        .padding()
                 }
                 AudioPlayerView().padding()
                 HStack {
