@@ -53,7 +53,6 @@
 		A77AED3E2927C816008525C6 /* audioTest.m4a in Resources */ = {isa = PBXBuildFile; fileRef = A77AED3D2927C816008525C6 /* audioTest.m4a */; };
 		A77AED402927FFD6008525C6 /* GifImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77AED3F2927FFD6008525C6 /* GifImage.swift */; };
 		A77AED42292881A4008525C6 /* TranscriptionProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77AED41292881A4008525C6 /* TranscriptionProcess.swift */; };
-		A77AED452928B79F008525C6 /* TranscriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77AED442928B79F008525C6 /* TranscriptionView.swift */; };
 		A7C077E8291E6F040011C3A6 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = A7C077E7291E6F040011C3A6 /* FirebaseAnalytics */; };
 		A7C077EA291E6F040011C3A6 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A7C077E9291E6F040011C3A6 /* FirebaseAuth */; };
 		A7C077EC291E6F040011C3A6 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = A7C077EB291E6F040011C3A6 /* FirebaseDatabase */; };
@@ -122,7 +121,6 @@
 		A77AED3F2927FFD6008525C6 /* GifImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifImage.swift; sourceTree = "<group>"; };
 		A77AED41292881A4008525C6 /* TranscriptionProcess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscriptionProcess.swift; sourceTree = "<group>"; };
 		A77AED4329289C55008525C6 /* ORO--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "ORO--iOS--Info.plist"; sourceTree = "<group>"; };
-		A77AED442928B79F008525C6 /* TranscriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscriptionView.swift; sourceTree = "<group>"; };
 		A7C077F3291E6FF60011C3A6 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		A7C077FF291ECA8D0011C3A6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -209,7 +207,6 @@
 				A77AED392927AE91008525C6 /* AudioPlayerView.swift */,
 				A77AED3F2927FFD6008525C6 /* GifImage.swift */,
 				A77AED41292881A4008525C6 /* TranscriptionProcess.swift */,
-				A77AED442928B79F008525C6 /* TranscriptionView.swift */,
 			);
 			path = Records;
 			sourceTree = "<group>";
@@ -538,7 +535,6 @@
 				A74643152925265F006A080B /* AddFolder.swift in Sources */,
 				0473AC86290BBDDB00ABB348 /* Folders.swift in Sources */,
 				A7C077F4291E6FF60011C3A6 /* SignupView.swift in Sources */,
-				A77AED452928B79F008525C6 /* TranscriptionView.swift in Sources */,
 				A77AED36292737EF008525C6 /* RecordEdit.swift in Sources */,
 				A721A9DD291FCDD7005E043B /* AudioRecorder.swift in Sources */,
 				A721A9E3291FCEDE005E043B /* AudioHelper.swift in Sources */,
