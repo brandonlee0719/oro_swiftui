@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Speech
 
 struct RecordPlayer: View {
 
@@ -13,6 +14,7 @@ struct RecordPlayer: View {
     @State private var selection: Int? = 0
     @State private var isShowingTranscribeProgress: Bool = false
     @State private var transcribeProgress: Bool = false
+    @State private var audioText: String = ""
     var audioURL: URL
     
     var body: some View {
@@ -51,7 +53,7 @@ struct RecordPlayer: View {
                             .cornerRadius(20)
         //                GifImage("audio_player")
                         VStack {
-                            Text("My First Record")
+                            Text("\(audioURL.lastPathComponent)")
                                 .font(.system(size: 24))
                                 .fontWeight(.semibold)
                                 .foregroundColor(Color(red: 0.4, green: 0.4, blue: 0.4))
@@ -62,13 +64,23 @@ struct RecordPlayer: View {
                         Spacer()
                     }
                 } else {
-                    TranscriptionView(audioURL: audioURL)
-                        .padding()
+                    VStack {
+                        ScrollView {
+                            Text("\(audioText)")
+                                .lineLimit(nil)
+                                .font(.system(size: 16))
+                                .lineSpacing(16)
+                                .padding()
+                        }
+                        Spacer()
+                    }
                 }
                 AudioPlayerView(audioURL: audioURL).padding()
                 HStack {
                     Button(action: {
-                        isShowingTranscribeProgress.toggle()
+                        if(!isShowingTranscribeProgress && !transcribeProgress) {
+                            isShowingTranscribeProgress.toggle()
+                        }
                     }) {
                         HStack {
                             Image("audio_text_inactive")
@@ -84,7 +96,7 @@ struct RecordPlayer: View {
                         }
                     }
                     .fullScreenCover(isPresented: $isShowingTranscribeProgress) {
-                        TranscriptionProcess(isProgress: $transcribeProgress)
+                        TranscriptionProcess(isProgress: $transcribeProgress, isShowing: $isShowingTranscribeProgress)
                     }
                     Spacer()
                     Button(action: {
@@ -107,6 +119,36 @@ struct RecordPlayer: View {
             }
         }
         .background(Color(red: 0.949, green: 0.957, blue: 0.98))
+        .onAppear(perform: requestTranscribePermissions)
+    }
+
+    func requestTranscribePermissions() {
+        SFSpeechRecognizer.requestAuthorization { authStatus in
+            DispatchQueue.main.async {
+                if authStatus == .authorized {
+                    print("Good to go!")
+                    transcribeAudio(url: audioURL)
+                } else {
+                    print("Transcription permission was declined.")
+                }
+            }
+        }
+    }
+
+    func transcribeAudio(url: URL) {
+        let recognizer = SFSpeechRecognizer()
+        let request = SFSpeechURLRecognitionRequest(url: url)
+
+        recognizer?.recognitionTask(with: request) { (result, error) in
+            guard let result = result else {
+                print("There was an error: \(error!)")
+                return
+            }
+            if result.isFinal {
+                print(result.bestTranscription.formattedString)
+                self.audioText = result.bestTranscription.formattedString
+            }
+        }
     }
 }
 

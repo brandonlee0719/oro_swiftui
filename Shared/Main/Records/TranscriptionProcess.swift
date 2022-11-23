@@ -10,6 +10,7 @@ import SwiftUI
 struct TranscriptionProcess: View {
     @Environment(\.dismiss) var dismiss
     @Binding var isProgress: Bool
+    @Binding var isShowing: Bool
     
     var body: some View {
         VStack{
@@ -42,6 +43,7 @@ struct TranscriptionProcess: View {
                 .padding()
             
             Button(action: {
+                isShowing.toggle()
                 dismiss()
             }) {
                 Text("No")
@@ -60,6 +62,6 @@ struct TranscriptionProcess: View {
 
 struct TranscriptionProcess_Previews: PreviewProvider {
     static var previews: some View {
-        TranscriptionProcess(isProgress: .constant(true))
+        TranscriptionProcess(isProgress: .constant(true), isShowing: .constant(true))
     }
 }
