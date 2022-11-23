@@ -69,6 +69,7 @@ struct RecordPlayer: View {
                             Text("\(audioText)")
                                 .lineLimit(nil)
                                 .font(.system(size: 16))
+                                .foregroundColor(Color(red: 0.4, green: 0.4, blue: 0.4))
                                 .lineSpacing(16)
                                 .padding()
                         }
