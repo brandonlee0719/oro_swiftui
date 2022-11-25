@@ -1,5 +1,6 @@
 
 import SwiftUI
+import AVFAudio
 
 struct MainView: View {
     
@@ -72,6 +73,24 @@ struct MainView: View {
                 }
             }
                .edgesIgnoringSafeArea(.bottom)
+               .onAppear(perform: enableBuiltInMic)
+        }
+    }
+    
+    private func enableBuiltInMic() {
+        // Get the shared audio session.
+        let session = AVAudioSession.sharedInstance()
+        // Find the built-in microphone input.
+        guard let availableInputs = session.availableInputs,
+        let builtInMicInput = availableInputs.first(where: { $0.portType == .builtInMic }) else {
+            print("The device must have a built-in microphone.")
+            return
+        }
+            // Make the built-in microphone input the preferred input.
+        do {
+            try session.setPreferredInput(builtInMicInput)
+        } catch {
+            print("Unable to set the built-in mic as the preferred input.")
         }
     }
 }

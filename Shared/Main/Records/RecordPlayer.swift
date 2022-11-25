@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Speech
+import DSWaveformImage
 
 struct RecordPlayer: View {
 
@@ -17,7 +18,13 @@ struct RecordPlayer: View {
     @State private var audiogramProgress: Bool = false
     @State private var audioText: String = ""
     var audioURL: URL
-    
+
+    @State var configuration: Waveform.Configuration = Waveform.Configuration(
+        style: .filled(.blue),
+        position: .origin(CGPoint(x: 0.6, y: 0.6)),
+        verticalScalingFactor: 0.5
+    )
+
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .center) {
@@ -76,11 +83,7 @@ struct RecordPlayer: View {
                         Spacer()
                     }
                 } else {
-                    VStack{
-                        Text("hell")
-                            .padding()
-                        Spacer()
-                    }
+                    WaveformView(audioURL: Bundle.main.url(forResource: "audioTest", withExtension: "m4a")!, configuration: configuration, renderer: LinearWaveformRenderer())
                 }
                 AudioPlayerView(audioURL: audioURL).padding()
                 HStack {
