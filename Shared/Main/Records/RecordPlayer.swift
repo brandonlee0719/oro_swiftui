@@ -83,7 +83,7 @@ struct RecordPlayer: View {
                         Spacer()
                     }
                 } else {
-                    WaveformView(audioURL: Bundle.main.url(forResource: "audioTest", withExtension: "m4a")!, configuration: configuration, renderer: LinearWaveformRenderer())
+                    WaveformView(audioURL: audioURL, configuration: configuration, renderer: LinearWaveformRenderer())
                 }
                 AudioPlayerView(audioURL: audioURL).padding()
                 HStack {

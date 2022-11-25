@@ -50,6 +50,8 @@
 		A724568F2930EAE300FA4F19 /* TempiFFT.swift in Sources */ = {isa = PBXBuildFile; fileRef = A724568D2930EAE300FA4F19 /* TempiFFT.swift */; };
 		A72456912930F88300FA4F19 /* WaveformImageDrawer+iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72456902930F88300FA4F19 /* WaveformImageDrawer+iOS.swift */; };
 		A72456922930F88300FA4F19 /* WaveformImageDrawer+iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72456902930F88300FA4F19 /* WaveformImageDrawer+iOS.swift */; };
+		A72456942930FC4D00FA4F19 /* WaveformRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72456932930FC4D00FA4F19 /* WaveformRenderer.swift */; };
+		A72456952930FC4D00FA4F19 /* WaveformRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72456932930FC4D00FA4F19 /* WaveformRenderer.swift */; };
 		A72F7F142922B15C00C093F4 /* Waveform in Frameworks */ = {isa = PBXBuildFile; productRef = A72F7F132922B15C00C093F4 /* Waveform */; };
 		A74643132924F4A3006A080B /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74643122924F4A3006A080B /* LocalStorage.swift */; };
 		A74643152925265F006A080B /* AddFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74643142925265F006A080B /* AddFolder.swift */; };
@@ -129,6 +131,7 @@
 		A724568A2930EA8B00FA4F19 /* WaveformAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveformAnalyzer.swift; sourceTree = "<group>"; };
 		A724568D2930EAE300FA4F19 /* TempiFFT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempiFFT.swift; sourceTree = "<group>"; };
 		A72456902930F88300FA4F19 /* WaveformImageDrawer+iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WaveformImageDrawer+iOS.swift"; sourceTree = "<group>"; };
+		A72456932930FC4D00FA4F19 /* WaveformRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveformRenderer.swift; sourceTree = "<group>"; };
 		A74643122924F4A3006A080B /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
 		A74643142925265F006A080B /* AddFolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFolder.swift; sourceTree = "<group>"; };
 		A746431629253426006A080B /* ChooseRecords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseRecords.swift; sourceTree = "<group>"; };
@@ -360,6 +363,7 @@
 				A724568A2930EA8B00FA4F19 /* WaveformAnalyzer.swift */,
 				A724568D2930EAE300FA4F19 /* TempiFFT.swift */,
 				A72456902930F88300FA4F19 /* WaveformImageDrawer+iOS.swift */,
+				A72456932930FC4D00FA4F19 /* WaveformRenderer.swift */,
 			);
 			path = WaveFormView;
 			sourceTree = "<group>";
@@ -569,6 +573,7 @@
 				A721A9E0291FCEA2005E043B /* AudioExtensions.swift in Sources */,
 				A77AED402927FFD6008525C6 /* GifImage.swift in Sources */,
 				04FEB40429070B6B008844DE /* SplashView.swift in Sources */,
+				A72456942930FC4D00FA4F19 /* WaveformRenderer.swift in Sources */,
 				A77AED3429272E3C008525C6 /* RecordPlayer.swift in Sources */,
 				A72456882930EA2100FA4F19 /* WaveformImageDrawer.swift in Sources */,
 				A72456852930E77C00FA4F19 /* LinearWaveformRenderer.swift in Sources */,
@@ -613,6 +618,7 @@
 				A724568F2930EAE300FA4F19 /* TempiFFT.swift in Sources */,
 				04FEB40329070B6B008844DE /* OROApp.swift in Sources */,
 				A72456862930E77C00FA4F19 /* LinearWaveformRenderer.swift in Sources */,
+				A72456952930FC4D00FA4F19 /* WaveformRenderer.swift in Sources */,
 				A721A9E1291FCEA2005E043B /* AudioExtensions.swift in Sources */,
 				A72456892930EA2100FA4F19 /* WaveformImageDrawer.swift in Sources */,
 				A721A9E4291FCEDE005E043B /* AudioHelper.swift in Sources */,

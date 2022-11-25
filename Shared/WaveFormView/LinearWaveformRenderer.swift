@@ -23,7 +23,7 @@ public struct LinearWaveformRenderer: WaveformRenderer {
     }
 
     public func style(context: CGContext, with configuration: Waveform.Configuration) {
-//        defaultStyle(context: context, with: configuration)
+        defaultStyle(context: context, with: configuration)
     }
 
     private func stripeBucket(_ configuration: Waveform.Configuration) -> Int {
