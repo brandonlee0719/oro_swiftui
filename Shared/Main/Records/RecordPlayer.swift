@@ -14,6 +14,7 @@ struct RecordPlayer: View {
     @State private var selection: Int? = 0
     @State private var isShowingTranscribeProgress: Bool = false
     @State private var transcribeProgress: Bool = false
+    @State private var audiogramProgress: Bool = false
     @State private var audioText: String = ""
     var audioURL: URL
     
@@ -43,7 +44,7 @@ struct RecordPlayer: View {
                     }
                 }
                 .padding()
-                if(!transcribeProgress) {
+                if(!transcribeProgress && !audiogramProgress) {
                     VStack {
                         Image("audio_player")
                             .resizable()
@@ -63,22 +64,28 @@ struct RecordPlayer: View {
                         }.padding()
                         Spacer()
                     }
-                } else {
+                } else if(transcribeProgress && !audiogramProgress) {
                     VStack {
                         ScrollView {
                             Text("\(audioText)")
                                 .lineLimit(nil)
                                 .font(.system(size: 16))
-                                .foregroundColor(Color(red: 0.4, green: 0.4, blue: 0.4))
                                 .lineSpacing(16)
                                 .padding()
                         }
+                        Spacer()
+                    }
+                } else {
+                    VStack{
+                        Text("hell")
+                            .padding()
                         Spacer()
                     }
                 }
                 AudioPlayerView(audioURL: audioURL).padding()
                 HStack {
                     Button(action: {
+                        audiogramProgress = false
                         if(!isShowingTranscribeProgress && !transcribeProgress) {
                             isShowingTranscribeProgress.toggle()
                         }
@@ -101,7 +108,7 @@ struct RecordPlayer: View {
                     }
                     Spacer()
                     Button(action: {
-                           
+                        audiogramProgress = true
                     }) {
                         HStack {
                             Text("Create\nAudiogram")
