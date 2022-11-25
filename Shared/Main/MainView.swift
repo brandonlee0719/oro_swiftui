@@ -78,19 +78,18 @@ struct MainView: View {
     }
     
     private func enableBuiltInMic() {
-        // Get the shared audio session.
-        let session = AVAudioSession.sharedInstance()
-        // Find the built-in microphone input.
-        guard let availableInputs = session.availableInputs,
-        let builtInMicInput = availableInputs.first(where: { $0.portType == .builtInMic }) else {
-            print("The device must have a built-in microphone.")
-            return
-        }
-            // Make the built-in microphone input the preferred input.
-        do {
-            try session.setPreferredInput(builtInMicInput)
-        } catch {
-            print("Unable to set the built-in mic as the preferred input.")
+        switch AVAudioSession.sharedInstance().recordPermission {
+        case AVAudioSession.RecordPermission.granted:
+            print("Permission granted")
+        case AVAudioSession.RecordPermission.denied:
+            print("Pemission denied")
+        case AVAudioSession.RecordPermission.undetermined:
+            print("Request permission here")
+            AVAudioSession.sharedInstance().requestRecordPermission({ (granted) in
+                print("Mic permission is Good")
+            })
+        @unknown default:
+            print("Unknown Error")
         }
     }
 }

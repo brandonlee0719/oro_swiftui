@@ -20,7 +20,7 @@ struct RecordPlayer: View {
     var audioURL: URL
 
     @State var configuration: Waveform.Configuration = Waveform.Configuration(
-        style: .filled(Color(red: 0.576, green: 0.62, blue: 0.678)),
+        style: .filled(UIColor(red: 0.576, green: 0.62, blue: 0.678, alpha: 1.0)),
         position: .origin(CGPoint(x: 0.6, y: 0.6)),
         verticalScalingFactor: 0.5
     )
