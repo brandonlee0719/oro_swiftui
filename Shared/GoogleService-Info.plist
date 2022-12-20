@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1092551674821-uckvnju8s80g428u4og4h45goctbmekc.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1092551674821-uckvnju8s80g428u4og4h45goctbmekc</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>1092551674821-jvtpm8gsssi6tbi8u8p36gsbicpq88bp.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDKKjWouviXw1vbZyA6y72p_xBbRUXsY8g</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1092551674821</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>app.oro</string>
+	<key>PROJECT_ID</key>
+	<string>oromic-a8967</string>
+	<key>STORAGE_BUCKET</key>
+	<string>oromic-a8967.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1092551674821:ios:7cb84b4187bf1ecfc899ac</string>
+	<key>DATABASE_URL</key>
+	<string>https://oromic-a8967.firebaseio.com</string>
+</dict>
+</plist>
