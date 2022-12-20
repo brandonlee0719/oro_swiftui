@@ -29,8 +29,8 @@ struct MainView: View {
                                 .offset(y: -geometry.size.height/6)
                         }
                         HStack {
-                            TabBarIcon(viewRouter: viewRouter, assignedPage: .record, width: geometry.size.width/5, height: geometry.size.height/28, iconName: "tab_record", tabName: "Records")
-                            TabBarIcon(viewRouter: viewRouter, assignedPage: .audiogram, width: geometry.size.width/5, height: geometry.size.height/28, iconName: "tab_audiogram", tabName: "Audiograms")
+                            TabBarIcon(viewRouter: viewRouter, assignedPage: .record, width: geometry.size.width/3, height: geometry.size.height/28, iconName: "tab_record", tabName: "Records")
+                            // TabBarIcon(viewRouter: viewRouter, assignedPage: .audiogram, width: geometry.size.width/5, height: geometry.size.height/28, iconName: "tab_audiogram", tabName: "Audiograms")
                             ZStack {
                                 Image("Btn_center")
                                     .resizable()
@@ -60,8 +60,8 @@ struct MainView: View {
                                         self.audioRecorder.stopRecording()
                                     }
                                 }
-                            TabBarIcon(viewRouter: viewRouter, assignedPage: .folder, width: geometry.size.width/5, height: geometry.size.height/28, iconName: "tab_folder", tabName: "Folders")
-                            TabBarIcon(viewRouter: viewRouter, assignedPage: .setting, width: geometry.size.width/5, height: geometry.size.height/28, iconName: "tab_setting", tabName: "Settings")
+                            TabBarIcon(viewRouter: viewRouter, assignedPage: .folder, width: geometry.size.width/3, height: geometry.size.height/28, iconName: "tab_folder", tabName: "Folders")
+                            // TabBarIcon(viewRouter: viewRouter, assignedPage: .setting, width: geometry.size.width/5, height: geometry.size.height/28, iconName: "tab_setting", tabName: "Settings")
                         }
                              .frame(width: geometry.size.width, height: geometry.size.height/896*100)
                             .background(

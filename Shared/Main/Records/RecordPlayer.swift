@@ -79,6 +79,7 @@ struct RecordPlayer: View {
                                 .font(.system(size: 16))
                                 .lineSpacing(16)
                                 .padding()
+                                .foregroundColor(Color(red: 0, green: 0, blue: 1))
                         }
                         Spacer()
                     }

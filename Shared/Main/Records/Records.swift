@@ -18,35 +18,35 @@ struct RecordView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .leading) {
-                HStack
-                {
-                    Spacer()
-                    Button(action: {
+                // HStack
+                // {
+                //     Spacer()
+                //     Button(action: {
                             
-                        }) {
-                            Text("Import")
-                                .font(.system(size: 16))
-                                .foregroundColor(.blue)
-                        }
-                        .cornerRadius(8)
-                    Spacer().frame(width:24)
-                }
-                HStack{
-                    Image(systemName: "magnifyingglass")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 16, height: 16)
-                        .foregroundColor(Color(red: 0.596, green: 0.635, blue: 0.643))
-                        .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 8))
-                    TextField(
-                        "Search",
-                        text: $search
-                    )
-                    .padding(EdgeInsets(top: 12, leading: 0, bottom: 12, trailing: 12))
-                }
-                    .background(.white)
-                    .cornerRadius(8)
-                    .padding(EdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 24))
+                //         }) {
+                //             Text("Import")
+                //                 .font(.system(size: 16))
+                //                 .foregroundColor(.blue)
+                //         }
+                //         .cornerRadius(8)
+                //     Spacer().frame(width:24)
+                // }
+                // HStack{
+                //     Image(systemName: "magnifyingglass")
+                //         .resizable()
+                //         .aspectRatio(contentMode: .fit)
+                //         .frame(width: 16, height: 16)
+                //         .foregroundColor(Color(red: 0.596, green: 0.635, blue: 0.643))
+                //         .padding(EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 8))
+                //     TextField(
+                //         "Search",
+                //         text: $search
+                //     )
+                //     .padding(EdgeInsets(top: 12, leading: 0, bottom: 12, trailing: 12))
+                // }
+                //     .background(.white)
+                //     .cornerRadius(8)
+                //     .padding(EdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 24))
                 Text("Recordings (\(audioRecorder.recordings.count))")
                     .font(.system(size: 16))
                     .fontWeight(.semibold)
