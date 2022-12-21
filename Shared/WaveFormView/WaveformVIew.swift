@@ -28,7 +28,7 @@ public struct WaveformView: View {
         priority: TaskPriority = .userInitiated
     ) {
         self.audioURL = audioURL
-        self.configuration = configuration.with(style: .striped(.init(color: UIColor(red: 0.576, green: 0.62, blue: 0.678, alpha: 1.0))))
+        self.configuration = configuration.with(style: .striped(.init(color: UIColor(red: 0.576, green: 0.62, blue: 0.678, alpha: 1.0), width: 3, spacing: 3)))
         self.renderer = renderer
         self.priority = priority
     }

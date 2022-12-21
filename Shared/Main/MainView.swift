@@ -7,11 +7,12 @@ struct MainView: View {
     @StateObject var viewRouter: MainRouter
     @ObservedObject var audioRecorder: AudioRecorder
 
+    @State private var showingRecording = false
     let background = LinearGradient(gradient: Gradient(colors: [Color(red: 76/255, green: 76/255, blue: 76/255), Color(red: 41/255, green: 41/255, blue: 41/255)]), startPoint: .top, endPoint: .bottom)
-    
+
     var body: some View {
         GeometryReader { geometry in
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 0) {
                 switch viewRouter.currentPage {
                     case .record:
                         RecordView(audioRecorder: audioRecorder)
@@ -23,11 +24,20 @@ struct MainView: View {
                         SettingView(viewRouter: viewRouter)
                 }
                 if(viewRouter.currentPage != .setting) {
-                    ZStack {
+                    ZStack(alignment: .leading) {
                         if (audioRecorder.recording) {
                             RecordMenu(widthAndHeight: geometry.size.width/7)
                                 .offset(y: -geometry.size.height/6)
                         }
+                        HStack {
+
+                        }
+                            .frame(width: geometry.size.width, height:showingRecording ? geometry.size.height/896*400 : 0)
+                            .offset(y: -6)
+                            .shadow(color: .black, radius: 1, x: -1, y: -1)
+                            .background(.gray)
+                            .cornerRadius(20)
+                            .animation(.linear)
                         HStack {
                             TabBarIcon(viewRouter: viewRouter, assignedPage: .record, width: geometry.size.width/3, height: geometry.size.height/28, iconName: "tab_record", tabName: "Records")
                             // TabBarIcon(viewRouter: viewRouter, assignedPage: .audiogram, width: geometry.size.width/5, height: geometry.size.height/28, iconName: "tab_audiogram", tabName: "Audiograms")
@@ -55,25 +65,37 @@ struct MainView: View {
                                 .offset(y: -geometry.size.height/8/2-6)
                                 .onTapGesture {
                                     if(audioRecorder.recording == false) {
-                                        self.audioRecorder.startRecording()
+                                        // self.audioRecorder.startRecording()
+                                        showingRecording.toggle()
                                     } else {
-                                        self.audioRecorder.stopRecording()
+                                        // self.audioRecorder.stopRecording()
+                                        showingRecording.toggle()
                                     }
                                 }
                             TabBarIcon(viewRouter: viewRouter, assignedPage: .folder, width: geometry.size.width/3, height: geometry.size.height/28, iconName: "tab_folder", tabName: "Folders")
                             // TabBarIcon(viewRouter: viewRouter, assignedPage: .setting, width: geometry.size.width/5, height: geometry.size.height/28, iconName: "tab_setting", tabName: "Settings")
                         }
-                             .frame(width: geometry.size.width, height: geometry.size.height/896*100)
+                            .frame(width: geometry.size.width, height: geometry.size.height/896*100)
                             .background(
                                 Image("Bg_tab")
                                     .resizable()
                                     .scaledToFill()
                             )
+                            .offset(y: getNavPosition(height: geometry.size.height))
+                        
                     }
                 }
             }
                .edgesIgnoringSafeArea(.bottom)
                .onAppear(perform: enableBuiltInMic)
+        }
+    }
+
+    private func getNavPosition(height: CGFloat) -> CGFloat {
+        if(showingRecording) {
+            return height/896*200 - height/8/2 + 6
+        } else {
+            return 0
         }
     }
     
